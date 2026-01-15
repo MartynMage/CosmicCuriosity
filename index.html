@@ -689,6 +689,43 @@
             color: var(--text-secondary);
         }
 
+        .event-countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+            margin-left: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .event-countdown.soon {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .event-countdown.very-soon {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-warm);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
         /* Gallery */
         .gallery-grid {
             display: grid;
@@ -1778,119 +1815,146 @@
                 <button class="filter-btn" data-filter="launch">🚀 Launches</button>
             </div>
 
-            <div class="events-timeline fade-in">
-                <div class="event-item" data-type="launch">
+            <div class="events-timeline fade-in" id="events-timeline">
+                <div class="event-item" data-type="launch" data-date="2026-02-06">
                     <div class="event-date">
                         <div class="event-month">Feb</div>
                         <div class="event-day">6</div>
                     </div>
                     <div class="event-dot launch"></div>
                     <div class="event-content">
-                        <span class="event-type launch">Launch</span>
+                        <div class="event-header">
+                            <span class="event-type launch">Launch</span>
+                            <span class="event-countdown" data-date="2026-02-06"></span>
+                        </div>
                         <div class="event-title">Artemis II Launch</div>
                         <div class="event-desc">NASA's historic crewed mission to the Moon — the first lunar voyage with humans in over 50 years. Four astronauts will orbit the Moon aboard the Orion spacecraft.</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="eclipse">
+                <div class="event-item" data-type="eclipse" data-date="2026-02-17">
                     <div class="event-date">
                         <div class="event-month">Feb</div>
                         <div class="event-day">17</div>
                     </div>
                     <div class="event-dot eclipse"></div>
                     <div class="event-content">
-                        <span class="event-type eclipse">Eclipse</span>
+                        <div class="event-header">
+                            <span class="event-type eclipse">Eclipse</span>
+                            <span class="event-countdown" data-date="2026-02-17"></span>
+                        </div>
                         <div class="event-title">Annular Solar Eclipse</div>
                         <div class="event-desc">A "ring of fire" eclipse visible from Antarctica. While challenging to reach, cruise ships may offer partial views from southern waters.</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="eclipse">
+                <div class="event-item" data-type="eclipse" data-date="2026-03-03">
                     <div class="event-date">
                         <div class="event-month">Mar</div>
                         <div class="event-day">3</div>
                     </div>
                     <div class="event-dot eclipse"></div>
                     <div class="event-content">
-                        <span class="event-type eclipse">Eclipse</span>
+                        <div class="event-header">
+                            <span class="event-type eclipse">Eclipse</span>
+                            <span class="event-countdown" data-date="2026-03-03"></span>
+                        </div>
                         <div class="event-title">Total Lunar Eclipse (Blood Moon)</div>
                         <div class="event-desc">The Moon turns deep red as it passes through Earth's shadow. Best viewed from Asia, Australia, and western North America. Don't miss this stunning sight!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="meteor">
+                <div class="event-item" data-type="meteor" data-date="2026-04-22">
                     <div class="event-date">
                         <div class="event-month">Apr</div>
                         <div class="event-day">22</div>
                     </div>
                     <div class="event-dot meteor"></div>
                     <div class="event-content">
-                        <span class="event-type meteor">Meteor Shower</span>
+                        <div class="event-header">
+                            <span class="event-type meteor">Meteor Shower</span>
+                            <span class="event-countdown" data-date="2026-04-22"></span>
+                        </div>
                         <div class="event-title">Lyrids Meteor Shower Peak</div>
                         <div class="event-desc">Up to 18 meteors per hour radiating from the constellation Lyra. With a 27% Moon, conditions will be favorable for watching shooting stars!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="meteor">
+                <div class="event-item" data-type="meteor" data-date="2026-08-12">
                     <div class="event-date">
                         <div class="event-month">Aug</div>
                         <div class="event-day">12</div>
                     </div>
                     <div class="event-dot meteor"></div>
                     <div class="event-content">
-                        <span class="event-type meteor">Meteor Shower</span>
+                        <div class="event-header">
+                            <span class="event-type meteor">Meteor Shower</span>
+                            <span class="event-countdown" data-date="2026-08-12"></span>
+                        </div>
                         <div class="event-title">Perseids Meteor Shower Peak</div>
                         <div class="event-desc">The year's best meteor shower with 60-120 meteors per hour! A NEW MOON means perfect dark skies for this spectacular show. Mark this date!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="eclipse">
+                <div class="event-item" data-type="eclipse" data-date="2026-08-12">
                     <div class="event-date">
                         <div class="event-month">Aug</div>
                         <div class="event-day">12</div>
                     </div>
                     <div class="event-dot eclipse"></div>
                     <div class="event-content">
-                        <span class="event-type eclipse">Eclipse</span>
+                        <div class="event-header">
+                            <span class="event-type eclipse">Eclipse</span>
+                            <span class="event-countdown" data-date="2026-08-12"></span>
+                        </div>
                         <div class="event-title">Total Solar Eclipse</div>
                         <div class="event-desc">A spectacular total eclipse visible from Greenland, Iceland, Spain, and Portugal. Totality lasts up to 2 minutes 18 seconds. Start planning your trip now!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="planet">
+                <div class="event-item" data-type="planet" data-date="2026-11-16">
                     <div class="event-date">
                         <div class="event-month">Nov</div>
                         <div class="event-day">16</div>
                     </div>
                     <div class="event-dot planet"></div>
                     <div class="event-content">
-                        <span class="event-type planet">Planets</span>
+                        <div class="event-header">
+                            <span class="event-type planet">Planets</span>
+                            <span class="event-countdown" data-date="2026-11-16"></span>
+                        </div>
                         <div class="event-title">Mars and Jupiter Close Conjunction</div>
                         <div class="event-desc">In the predawn hours, the red glow of Mars will appear remarkably close to brilliant Jupiter in the eastern sky — a beautiful sight for early risers!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="meteor">
+                <div class="event-item" data-type="meteor" data-date="2026-12-14">
                     <div class="event-date">
                         <div class="event-month">Dec</div>
                         <div class="event-day">14</div>
                     </div>
                     <div class="event-dot meteor"></div>
                     <div class="event-content">
-                        <span class="event-type meteor">Meteor Shower</span>
+                        <div class="event-header">
+                            <span class="event-type meteor">Meteor Shower</span>
+                            <span class="event-countdown" data-date="2026-12-14"></span>
+                        </div>
                         <div class="event-title">Geminids Meteor Shower Peak</div>
                         <div class="event-desc">The strongest meteor shower of the year with up to 120 colorful meteors per hour. Moon-free skies will make this a can't-miss event!</div>
                     </div>
                 </div>
 
-                <div class="event-item" data-type="planet">
+                <div class="event-item" data-type="planet" data-date="2026-12-23">
                     <div class="event-date">
                         <div class="event-month">Dec</div>
                         <div class="event-day">23</div>
                     </div>
                     <div class="event-dot planet"></div>
                     <div class="event-content">
-                        <span class="event-type planet">Supermoon</span>
+                        <div class="event-header">
+                            <span class="event-type planet">Supermoon</span>
+                            <span class="event-countdown" data-date="2026-12-23"></span>
+                        </div>
                         <div class="event-title">December Supermoon (Closest of 2026)</div>
                         <div class="event-desc">The Moon will be at its closest point to Earth all year at just 221,667 miles away — appearing 14% larger and 30% brighter than usual!</div>
                     </div>
@@ -2191,6 +2255,51 @@
         const daysToEclipse = Math.ceil((nextEclipse - today) / (1000 * 60 * 60 * 24));
         document.getElementById('days-to-next').textContent = Math.max(0, daysToEclipse);
 
+        // Calculate and display event countdowns
+        function updateEventCountdowns() {
+            const now = new Date();
+            now.setHours(0, 0, 0, 0); // Compare dates only
+            
+            document.querySelectorAll('.event-countdown[data-date]').forEach(badge => {
+                const eventDate = new Date(badge.dataset.date + 'T00:00:00');
+                const diffTime = eventDate - now;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                let text = '';
+                let className = 'event-countdown';
+                
+                if (diffDays < 0) {
+                    // Event has passed
+                    text = 'Passed';
+                    badge.style.opacity = '0.5';
+                } else if (diffDays === 0) {
+                    text = '🎉 Today!';
+                    className += ' very-soon';
+                } else if (diffDays === 1) {
+                    text = '⏰ Tomorrow!';
+                    className += ' very-soon';
+                } else if (diffDays <= 7) {
+                    text = `${diffDays} days away`;
+                    className += ' very-soon';
+                } else if (diffDays <= 30) {
+                    text = `${diffDays} days away`;
+                    className += ' soon';
+                } else if (diffDays <= 60) {
+                    const weeks = Math.round(diffDays / 7);
+                    text = `~${weeks} weeks away`;
+                    className += ' soon';
+                } else {
+                    const months = Math.round(diffDays / 30);
+                    text = `~${months} month${months > 1 ? 's' : ''} away`;
+                }
+                
+                badge.textContent = text;
+                badge.className = className;
+            });
+        }
+        
+        updateEventCountdowns();
+
         // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
@@ -2356,24 +2465,45 @@
         }
 
         // Calculate sun position and visibility
-        function getSunTimes(lat, lng, date = new Date()) {
-            // Simplified sunrise/sunset calculation
-            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+        function getSunTimes(lat, lng, timezone, date = new Date()) {
+            // Calculate day of year
+            const start = new Date(date.getFullYear(), 0, 0);
+            const diff = date - start;
+            const dayOfYear = Math.floor(diff / 86400000);
+            
+            // Solar declination (angle of sun relative to equator)
             const declination = 23.45 * Math.sin((360/365) * (dayOfYear - 81) * Math.PI / 180);
             
-            const hourAngle = Math.acos(
-                -Math.tan(lat * Math.PI / 180) * Math.tan(declination * Math.PI / 180)
-            ) * 180 / Math.PI;
+            // Hour angle (how long sun is up)
+            const latRad = lat * Math.PI / 180;
+            const decRad = declination * Math.PI / 180;
+            const cosHourAngle = -Math.tan(latRad) * Math.tan(decRad);
             
-            const solarNoon = 12 - lng / 15;
-            const sunrise = solarNoon - hourAngle / 15;
-            const sunset = solarNoon + hourAngle / 15;
+            // Clamp to valid range (handles polar day/night)
+            const clampedCos = Math.max(-1, Math.min(1, cosHourAngle));
+            const hourAngle = Math.acos(clampedCos) * 180 / Math.PI;
+            
+            // Solar noon in UTC (when sun is highest)
+            const solarNoonUTC = 12 - lng / 15;
+            
+            // Convert to local time by adding timezone offset
+            // timezone is negative for US (e.g., -8 for PST)
+            const solarNoonLocal = solarNoonUTC + timezone;
+            
+            // Calculate sunrise and sunset in local time
+            const daylightHours = (hourAngle / 15) * 2;
+            const sunrise = solarNoonLocal - (daylightHours / 2);
+            const sunset = solarNoonLocal + (daylightHours / 2);
+            
+            // Normalize hours to 0-24 range
+            const normalizedSunrise = ((sunrise % 24) + 24) % 24;
+            const normalizedSunset = ((sunset % 24) + 24) % 24;
             
             return {
-                sunrise: formatTime(sunrise),
-                sunset: formatTime(sunset),
-                sunriseHour: sunrise,
-                sunsetHour: sunset
+                sunrise: formatTime(normalizedSunrise),
+                sunset: formatTime(normalizedSunset),
+                sunriseHour: normalizedSunrise,
+                sunsetHour: normalizedSunset
             };
         }
 
@@ -2525,7 +2655,7 @@
         }
 
         function getViewingConditions(location, moonIllum) {
-            const sunTimes = getSunTimes(location.lat, location.lng);
+            const sunTimes = getSunTimes(location.lat, location.lng, location.timezone);
             
             // Determine sky darkness based on moon
             let darkness = 'Excellent';
@@ -2539,10 +2669,10 @@
             else if (moonIllum > 50) moonlight = 'Moderate';
             else if (moonIllum > 25) moonlight = 'Low';
             
-            // Best viewing window
-            const bestStart = Math.ceil(sunTimes.sunsetHour) + 2;
-            const bestEnd = bestStart + 2;
-            const bestViewing = `${bestStart % 12 || 12}-${bestEnd % 12 || 12} PM`;
+            // Best viewing window (after astronomical twilight, ~1.5-2 hrs after sunset)
+            const bestStartHour = sunTimes.sunsetHour + 1.5;
+            const bestEndHour = bestStartHour + 2;
+            const bestViewing = `${formatTime(bestStartHour).replace(':00 ', ' ')} - ${formatTime(bestEndHour).replace(':00 ', ' ')}`;
             
             return {
                 darkness,
