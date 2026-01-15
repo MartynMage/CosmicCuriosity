@@ -1,10 +1,37 @@
 # robots.txt for CosmicCuriosity
+# https://cosmiccuriosity.io
 
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://cosmiccuriosity.com/sitemap.xml
+# Allow all search engine crawlers
+User-agent: Googlebot
+Allow: /
 
-# Crawl-delay (optional, be nice to servers)
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block AI training crawlers (optional - remove if you want AI indexing)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://cosmiccuriosity.io/sitemap.xml
+
+# Crawl-delay (be nice to servers)
 Crawl-delay: 1
+
+# Host directive
+Host: https://cosmiccuriosity.io

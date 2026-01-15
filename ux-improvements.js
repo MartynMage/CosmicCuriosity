@@ -1014,25 +1014,25 @@ const MobileNav = {
         const nav = document.createElement('div');
         nav.id = 'mobile-bottom-nav';
         nav.innerHTML = `
-            <a href="#tonight" class="mobile-nav-item">
+            <a href="#tonight" class="mobile-nav-item" data-section="tonight">
                 <span class="mobile-nav-icon">🌙</span>
                 <span class="mobile-nav-label">Tonight</span>
             </a>
-            <a href="#tools" onclick="ToolsSidebar.showTool('planets')" class="mobile-nav-item">
-                <span class="mobile-nav-icon">🪐</span>
-                <span class="mobile-nav-label">Planets</span>
+            <a href="#events" class="mobile-nav-item" data-section="events">
+                <span class="mobile-nav-icon">📅</span>
+                <span class="mobile-nav-label">Events</span>
             </a>
-            <a href="#tools" class="mobile-nav-item mobile-nav-center">
+            <a href="#tools" class="mobile-nav-item" data-section="tools">
                 <span class="mobile-nav-icon">🔭</span>
                 <span class="mobile-nav-label">Tools</span>
             </a>
-            <a href="#tools" onclick="ToolsSidebar.showTool('meteors')" class="mobile-nav-item">
-                <span class="mobile-nav-icon">☄️</span>
-                <span class="mobile-nav-label">Meteors</span>
+            <a href="#gallery" class="mobile-nav-item" data-section="gallery">
+                <span class="mobile-nav-icon">🖼️</span>
+                <span class="mobile-nav-label">Gallery</span>
             </a>
-            <a href="#events" class="mobile-nav-item">
-                <span class="mobile-nav-icon">📅</span>
-                <span class="mobile-nav-label">Events</span>
+            <a href="#news" class="mobile-nav-item" data-section="news">
+                <span class="mobile-nav-icon">📰</span>
+                <span class="mobile-nav-label">News</span>
             </a>
         `;
         
@@ -1080,6 +1080,10 @@ const MobileNav = {
                 background: var(--bg-hover);
             }
             
+            .mobile-nav-item.active {
+                color: var(--accent-glow);
+            }
+            
             .mobile-nav-icon {
                 font-size: 1.25rem;
             }
@@ -1088,20 +1092,60 @@ const MobileNav = {
                 font-size: 0.65rem;
                 font-weight: 500;
             }
-            
-            .mobile-nav-center {
-                background: var(--accent-glow);
-                color: white;
-                border-radius: 12px;
-                margin-top: -1rem;
-                padding: 0.75rem;
-            }
         `;
         
         document.head.appendChild(style);
         document.body.appendChild(nav);
         
+        // Add scroll tracking for active state
+        this.initScrollTracking(nav);
+        
+        // Add click handlers for smooth scrolling
+        nav.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = item.dataset.section;
+                const target = document.getElementById(section);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
         return this;
+    },
+    
+    initScrollTracking(nav) {
+        const sections = ['tonight', 'events', 'tools', 'gallery', 'news'];
+        
+        function updateActiveNav() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+            let activeSection = sections[0];
+            
+            for (const sectionId of sections) {
+                const section = document.getElementById(sectionId);
+                if (section && scrollPos >= section.offsetTop) {
+                    activeSection = sectionId;
+                }
+            }
+            
+            nav.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.section === activeSection);
+            });
+        }
+        
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        
+        updateActiveNav();
     }
 };
 
@@ -1258,7 +1302,7 @@ const UXImprovements = {
     
     setup() {
         // Initialize all modules
-        ToolsSidebar.init();
+        // ToolsSidebar.init(); // Disabled - using new tabbed tools section in index.html
         MobileNav.init();
         MicroInteractions.init();
         Achievements.check();

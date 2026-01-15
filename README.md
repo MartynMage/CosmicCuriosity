@@ -9,7 +9,7 @@ A comprehensive, beautifully-designed astronomy web application featuring 80+ in
 
 ## 🌟 Live Demo
 
-**[→ Visit CosmicCuriosity.com](https://cosmiccuriosity.com)**
+**[→ Visit CosmicCuriosity.com](https://cosmiccuriosity.io)**
 
 ---
 

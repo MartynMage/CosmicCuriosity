@@ -1,6 +1,6 @@
 // ==========================================
 // COSMIC CURIOSITY - ENHANCED FEATURES v2
-// Features: Night Mode, Gamification, Calendar, Share, ISS, Weather, PWA
+// Features: Night Mode, Gamification, Calendar, Share, Weather, PWA
 // ==========================================
 
 // ==========================================
@@ -61,42 +61,177 @@ const NightMode = {
         style.textContent = `
             body.night-mode {
                 --bg-deep: #0a0000 !important;
-                --bg-card: #120000 !important;
-                --bg-hover: #1a0000 !important;
-                --accent-glow: #8b0000 !important;
-                --accent-warm: #8b0000 !important;
-                --accent-cool: #8b0000 !important;
-                --accent-rose: #8b0000 !important;
-                --accent-green: #8b0000 !important;
-                --text-primary: #ff4444 !important;
-                --text-secondary: #aa2222 !important;
-                --text-dim: #661111 !important;
-                --border: rgba(139,0,0,0.3) !important;
+                --bg-card: #1a0505 !important;
+                --bg-hover: #2a0a0a !important;
+                --accent-glow: #cc3333 !important;
+                --accent-warm: #cc3333 !important;
+                --accent-cool: #cc3333 !important;
+                --accent-rose: #cc3333 !important;
+                --accent-green: #cc3333 !important;
+                --text-primary: #ff6666 !important;
+                --text-secondary: #cc4444 !important;
+                --text-dim: #993333 !important;
+                --border: rgba(180,60,60,0.4) !important;
             }
+            
+            /* Ensure buttons and interactive elements are readable */
+            body.night-mode .location-btn,
+            body.night-mode .zip-submit-btn,
+            body.night-mode button[type="submit"] {
+                background: linear-gradient(135deg, #cc3333, #ff5555) !important;
+                color: #1a0000 !important;
+            }
+            
+            /* Cards need more contrast */
+            body.night-mode .glass-card,
+            body.night-mode .location-card,
+            body.night-mode .sky-summary-card,
+            body.night-mode .event-item,
+            body.night-mode .news-card,
+            body.night-mode .gallery-item {
+                background: rgba(30, 10, 10, 0.9) !important;
+                border-color: rgba(180, 60, 60, 0.3) !important;
+            }
+            
+            /* Nav links */
+            body.night-mode nav a {
+                color: #cc4444 !important;
+            }
+            body.night-mode nav a:hover,
+            body.night-mode nav a.active {
+                color: #ff6666 !important;
+                background: rgba(180, 60, 60, 0.2) !important;
+            }
+            
+            /* Mobile nav */
+            body.night-mode .mobile-bottom-nav {
+                background: rgba(15, 5, 5, 0.98) !important;
+                border-color: rgba(180, 60, 60, 0.3) !important;
+            }
+            body.night-mode .mobile-bottom-nav a {
+                color: #aa3333 !important;
+            }
+            body.night-mode .mobile-bottom-nav a.active {
+                color: #ff6666 !important;
+            }
+            
+            /* Badges and tags */
+            body.night-mode .visibility-badge,
+            body.night-mode .event-tag,
+            body.night-mode .news-category {
+                background: rgba(180, 60, 60, 0.2) !important;
+                color: #ff6666 !important;
+            }
+            
+            /* Input fields */
+            body.night-mode input,
+            body.night-mode .zip-input {
+                background: #1a0505 !important;
+                border-color: rgba(180, 60, 60, 0.4) !important;
+                color: #ff6666 !important;
+            }
+            body.night-mode input::placeholder {
+                color: #883333 !important;
+            }
+            
+            /* Stat values */
+            body.night-mode .stat-value,
+            body.night-mode .condition-value,
+            body.night-mode .sky-object-name {
+                color: #ff6666 !important;
+            }
+            
+            /* Labels and secondary text - ensure minimum contrast */
+            body.night-mode .stat-label,
+            body.night-mode .condition-label,
+            body.night-mode .event-date,
+            body.night-mode .privacy-note,
+            body.night-mode .summary-highlight-label {
+                color: #aa4444 !important;
+            }
+            
+            /* Moon and icons */
+            body.night-mode .moon-display,
+            body.night-mode .summary-highlight-icon {
+                filter: grayscale(100%) brightness(0.8) sepia(100%) hue-rotate(-50deg) saturate(3);
+            }
+            
+            /* Images - strong red filter */
             body.night-mode img:not(.logo-icon img),
             body.night-mode .news-image,
-            body.night-mode .gallery-item,
+            body.night-mode .gallery-item img,
             body.night-mode .apod-hero {
                 filter: grayscale(100%) brightness(0.3) sepia(100%) hue-rotate(-50deg) saturate(5);
             }
-            body.night-mode .nebula { opacity: 0.03; }
+            
+            /* Background elements */
+            body.night-mode .nebula { opacity: 0.02; }
+            body.night-mode .star-field { opacity: 0.3; }
+            
+            /* Toggle button */
             .night-toggle-btn {
-                width: 36px; height: 36px; border-radius: 50%;
-                border: 1px solid var(--border, rgba(255,255,255,0.06));
-                background: transparent; cursor: pointer; font-size: 1rem;
-                display: flex; align-items: center; justify-content: center;
+                display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+                padding: 0.4rem 0.75rem; border-radius: 20px;
+                border: 1px solid var(--border, rgba(255,255,255,0.08));
+                background: transparent; cursor: pointer;
+                font-size: 0.75rem; font-weight: 500;
+                color: var(--text-secondary);
                 transition: all 0.3s ease;
+                white-space: nowrap;
             }
-            .night-toggle-btn:hover { background: var(--bg-hover, #0f0f25); }
-            body.night-mode .night-toggle-btn { background: #8b0000; border-color: #ff4444; }
+            .night-toggle-btn svg {
+                width: 16px; height: 16px;
+                stroke: currentColor; fill: none;
+                stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            }
+            .night-toggle-btn:hover { 
+                background: var(--bg-hover, #0f0f25); 
+                border-color: #ef4444;
+                color: #ef4444;
+            }
+            body.night-mode .night-toggle-btn { 
+                background: rgba(180, 60, 60, 0.3); 
+                border-color: #ff5555; 
+                color: #ff6666;
+            }
+            
+            /* Ensure hero text is readable */
+            body.night-mode .hero h1,
+            body.night-mode .hero em {
+                color: #ff6666 !important;
+                text-shadow: 0 0 30px rgba(255, 80, 80, 0.3);
+            }
+            body.night-mode .hero-subtitle {
+                color: #cc4444 !important;
+            }
+            
+            /* Section headers */
+            body.night-mode .section-header h2 {
+                color: #ff6666 !important;
+            }
+            body.night-mode .section-header p {
+                color: #aa4444 !important;
+            }
+            
+            @media (max-width: 768px) {
+                .night-toggle-btn span { display: none; }
+                .night-toggle-btn { padding: 0.5rem; border-radius: 50%; }
+            }
         `;
         document.head.appendChild(style);
         
-        // Create button
+        // Create button with eye icon
         const btn = document.createElement('button');
         btn.className = 'night-toggle-btn';
-        btn.innerHTML = '🔴';
-        btn.title = 'Night Vision Mode (preserves dark adaptation)';
+        btn.setAttribute('aria-label', 'Toggle night vision mode - uses red light to preserve dark-adapted eyes for stargazing');
+        btn.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span>Night Vision</span>
+        `;
+        btn.title = 'Night Vision Mode\nUses red light to preserve your dark-adapted eyes while stargazing';
         btn.onclick = () => this.toggle();
         
         const headerInner = document.querySelector('.header-inner');
@@ -111,13 +246,14 @@ const NightMode = {
         this.enabled = true;
         document.body.classList.add('night-mode');
         localStorage.setItem('nightMode', 'true');
-        Toast.show('🔴 Night vision enabled — preserves dark adaptation', 'info');
+        Toast.show('👁️ Night Vision ON — Red light preserves dark-adapted eyes', 'info');
     },
     
     disable() {
         this.enabled = false;
         document.body.classList.remove('night-mode');
         localStorage.setItem('nightMode', 'false');
+        Toast.show('Night Vision OFF — Normal colors restored', 'info');
     }
 };
 
@@ -138,15 +274,7 @@ const Challenges = {
     
     init() {
         this.today = new Date().toDateString();
-        this.streak = parseInt(localStorage.getItem('challengeStreak') || '0');
-        this.lastCompleted = localStorage.getItem('lastChallengeDate') || '';
         this.todayCompleted = localStorage.getItem('challengeCompletedDate') === this.today;
-        
-        // Check streak continuity
-        if (this.lastCompleted && this.lastCompleted !== this.today) {
-            const daysDiff = Math.floor((new Date() - new Date(this.lastCompleted)) / 86400000);
-            if (daysDiff > 1) { this.streak = 0; localStorage.setItem('challengeStreak', '0'); }
-        }
         
         // Get today's challenge
         const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
@@ -165,21 +293,17 @@ const Challenges = {
         }
         
         container.innerHTML = `
-            <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 1.5rem; max-width: 500px; margin: 2rem auto 0; text-align: left;">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
-                    <span style="font-size: 1.5rem;">🎯</span>
+            <div id="challenge-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 1.25rem 1.5rem; max-width: 500px; margin: 1.5rem auto 0; text-align: left; position: relative; overflow: hidden;">
+                <div id="celebration-container" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;"></div>
+                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 1.5rem;">${this.current.badge}</span>
                     <div>
-                        <div style="font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #10b981; text-transform: uppercase; letter-spacing: 0.1em;">Tonight's Challenge</div>
-                        <div style="font-size: 1.1rem; font-weight: 600;">${this.current.title}</div>
+                        <div style="font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #10b981; text-transform: uppercase; letter-spacing: 0.1em;">Tonight's Challenge</div>
+                        <div style="font-size: 1rem; font-weight: 600;">${this.current.title}</div>
                     </div>
                 </div>
-                <p style="font-size: 0.9rem; color: var(--text-secondary, #9898b0); margin-bottom: 1rem;">${this.current.desc}</p>
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #f59e0b;">
-                        <span>🔥</span><span>${this.streak} day streak</span>
-                    </div>
-                    <button onclick="Challenges.complete()" style="padding: 0.5rem 1rem; border-radius: 20px; border: ${this.todayCompleted ? '1px solid #10b981' : 'none'}; background: ${this.todayCompleted ? 'transparent' : '#10b981'}; color: ${this.todayCompleted ? '#10b981' : 'white'}; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit;">${this.todayCompleted ? '✓ Completed!' : 'I Did It!'}</button>
-                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary, #9898b0); margin-bottom: 1rem; line-height: 1.5;">${this.current.desc}</p>
+                <button id="challenge-btn" onclick="Challenges.complete()" style="padding: 0.5rem 1.25rem; border-radius: 20px; border: ${this.todayCompleted ? '1px solid #10b981' : 'none'}; background: ${this.todayCompleted ? 'transparent' : 'linear-gradient(135deg, #10b981, #06b6d4)'}; color: ${this.todayCompleted ? '#10b981' : 'white'}; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.3s ease; ${this.todayCompleted ? '' : 'box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);'}">${this.todayCompleted ? '✓ Completed!' : 'I Did It!'}</button>
             </div>
         `;
     },
@@ -187,12 +311,88 @@ const Challenges = {
     complete() {
         if (this.todayCompleted) return;
         this.todayCompleted = true;
-        this.streak++;
         localStorage.setItem('challengeCompletedDate', this.today);
-        localStorage.setItem('lastChallengeDate', this.today);
-        localStorage.setItem('challengeStreak', this.streak.toString());
-        this.render();
-        Toast.show(`🎉 Challenge complete! ${this.streak} day streak!`, 'success');
+        
+        // Trigger celebration animation
+        this.celebrate();
+        
+        // Update button with animation
+        const btn = document.getElementById('challenge-btn');
+        if (btn) {
+            btn.style.transform = 'scale(1.1)';
+            btn.style.background = 'transparent';
+            btn.style.border = '1px solid #10b981';
+            btn.style.color = '#10b981';
+            btn.style.boxShadow = 'none';
+            btn.textContent = '✓ Completed!';
+            setTimeout(() => { btn.style.transform = 'scale(1)'; }, 300);
+        }
+        
+        Toast.show(`🎉 Amazing! Challenge complete!`, 'success');
+    },
+    
+    celebrate() {
+        const container = document.getElementById('celebration-container');
+        if (!container) return;
+        
+        // Create shooting stars, sparkles, and confetti
+        const particles = [];
+        const emojis = ['⭐', '✨', '🌟', '💫', '🎉', '🌙', '☄️', '🪐', '🚀'];
+        
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            const startX = Math.random() * 100;
+            const startY = 100 + Math.random() * 20;
+            const endY = -20 - Math.random() * 30;
+            const duration = 1 + Math.random() * 1.5;
+            const delay = Math.random() * 0.5;
+            const drift = (Math.random() - 0.5) * 100;
+            const rotation = Math.random() * 720 - 360;
+            
+            particle.textContent = emoji;
+            particle.style.cssText = `
+                position: absolute;
+                left: ${startX}%;
+                bottom: 0;
+                font-size: ${0.8 + Math.random() * 1.2}rem;
+                opacity: 0;
+                animation: celebrateParticle ${duration}s ease-out ${delay}s forwards;
+                --endY: ${endY}%;
+                --drift: ${drift}px;
+                --rotation: ${rotation}deg;
+            `;
+            
+            container.appendChild(particle);
+            particles.push(particle);
+        }
+        
+        // Add keyframes if not already added
+        if (!document.getElementById('celebrate-keyframes')) {
+            const style = document.createElement('style');
+            style.id = 'celebrate-keyframes';
+            style.textContent = `
+                @keyframes celebrateParticle {
+                    0% { 
+                        opacity: 1; 
+                        transform: translateY(0) translateX(0) rotate(0deg) scale(0.5); 
+                    }
+                    50% { 
+                        opacity: 1; 
+                    }
+                    100% { 
+                        opacity: 0; 
+                        transform: translateY(var(--endY)) translateX(var(--drift)) rotate(var(--rotation)) scale(1.2); 
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Clean up particles after animation
+        setTimeout(() => {
+            particles.forEach(p => p.remove());
+        }, 3000);
     }
 };
 
@@ -244,7 +444,7 @@ const Share = {
             navigator.share({
                 title: title,
                 text: `🌟 ${title} on ${dateFormatted}! Check it out on CosmicCuriosity`,
-                url: 'https://cosmiccuriosity.com/#events'
+                url: 'https://cosmiccuriosity.io/#events'
             }).catch(() => {});
             return;
         }
@@ -284,7 +484,7 @@ const Share = {
     
     via(platform) {
         const { title, date } = this.currentEvent;
-        const url = 'https://cosmiccuriosity.com/#events';
+        const url = 'https://cosmiccuriosity.io/#events';
         const dateFormatted = new Date(date).toLocaleDateString('en', { month: 'long', day: 'numeric', year: 'numeric' });
         const text = `🌟 ${title} on ${dateFormatted}! Check it out on CosmicCuriosity`;
         
@@ -307,110 +507,8 @@ const Share = {
 };
 
 // ==========================================
-// 5. ISS TRACKER
 // ==========================================
-
-const ISSTracker = {
-    init() {
-        this.createSection();
-        this.update();
-        setInterval(() => this.update(), 5000);
-    },
-    
-    createSection() {
-        if (document.getElementById('iss-tracker-section')) return;
-        
-        const section = document.createElement('section');
-        section.id = 'iss';
-        section.innerHTML = `
-            <div class="section-header fade-in"><div class="section-label">Live Tracking</div><h2 class="section-title">International Space Station</h2></div>
-            <div id="iss-tracker-section" class="fade-in" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 16px; padding: 1.5rem;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        <span style="font-size: 1.5rem;">🛸</span>
-                        <h3 style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; margin: 0;">ISS Position</h3>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.7rem; background: rgba(16, 185, 129, 0.15); border-radius: 100px; font-size: 0.75rem; color: #10b981;">
-                        <span style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
-                        <span>Live</span>
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
-                    <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px;">
-                        <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Latitude</div>
-                        <div id="iss-lat" style="font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 600;">--</div>
-                    </div>
-                    <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px;">
-                        <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Longitude</div>
-                        <div id="iss-lng" style="font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 600;">--</div>
-                    </div>
-                    <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px;">
-                        <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Altitude</div>
-                        <div style="font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 600;">~420 km</div>
-                    </div>
-                    <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px;">
-                        <div style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;">Speed</div>
-                        <div style="font-family: 'Space Mono', monospace; font-size: 1.1rem; font-weight: 600;">27,600 km/h</div>
-                    </div>
-                </div>
-                <div id="iss-passes" style="border-top: 1px solid var(--border); padding-top: 1rem;">
-                    <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">📍 Enter your ZIP code above to see ISS passes</div>
-                </div>
-            </div>
-        `;
-        
-        const tonight = document.getElementById('tonight');
-        if (tonight) tonight.after(section);
-    },
-    
-    update() {
-        const now = Date.now();
-        const period = 92.68 * 60 * 1000;
-        const phase = (now % period) / period;
-        
-        const lat = (51.6 * Math.sin(phase * 2 * Math.PI)).toFixed(2);
-        const lng = (((phase * 360 + 180) % 360) - 180).toFixed(2);
-        
-        const latEl = document.getElementById('iss-lat');
-        const lngEl = document.getElementById('iss-lng');
-        if (latEl) latEl.textContent = lat + '°';
-        if (lngEl) lngEl.textContent = lng + '°';
-    },
-    
-    generatePasses() {
-        const passes = [];
-        const now = new Date();
-        for (let i = 0; i < 3; i++) {
-            passes.push({
-                time: new Date(now.getTime() + (i + 1) * 8 * 3600000 + Math.random() * 3600000),
-                duration: Math.floor(3 + Math.random() * 4),
-                maxEl: Math.floor(20 + Math.random() * 60)
-            });
-        }
-        return passes;
-    },
-    
-    renderPasses(passes) {
-        const container = document.getElementById('iss-passes');
-        if (!container) return;
-        
-        container.innerHTML = `
-            <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem;">📍 Upcoming Passes Over Your Location</div>
-            ${passes.map(p => `
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border); margin-bottom: 0.5rem;">
-                    <div>
-                        <div style="font-family: 'Space Mono', monospace; font-size: 0.9rem;">${p.time.toLocaleString('en', { weekday: 'short', hour: 'numeric', minute: '2-digit' })}</div>
-                        <div style="font-size: 0.8rem; color: var(--text-secondary);">${p.duration} min • ${p.maxEl}° max elevation</div>
-                    </div>
-                    <button onclick="Toast.show('🔔 ISS alert set!', 'success'); this.textContent='✓ Set'" style="padding: 0.35rem 0.7rem; background: transparent; border: 1px solid #f59e0b; border-radius: 20px; color: #f59e0b; font-size: 0.75rem; cursor: pointer;">🔔 Alert</button>
-                </div>
-            `).join('')}
-        `;
-    }
-};
-
-// ==========================================
-// 6. EQUIPMENT FILTER
+// 5. EQUIPMENT FILTER
 // ==========================================
 
 const EquipmentFilter = {
@@ -671,7 +769,8 @@ const QuickWins = {
     
     addEventActions() {
         document.querySelectorAll('.event-content').forEach(content => {
-            if (content.querySelector('.event-actions-new')) return;
+            // Skip if already has our new actions OR has existing action buttons
+            if (content.querySelector('.event-actions-new') || content.querySelector('.event-actions')) return;
             
             const title = content.querySelector('.event-title')?.textContent || 'Event';
             const parent = content.closest('.event-item');
@@ -725,7 +824,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Challenges.init();
     EquipmentFilter.init();
     BestNight.render();
-    ISSTracker.init();
     PWA.init();
     QuickWins.init();
     
@@ -739,7 +837,6 @@ window.NightMode = NightMode;
 window.Challenges = Challenges;
 window.Calendar = Calendar;
 window.Share = Share;
-window.ISSTracker = ISSTracker;
 window.EquipmentFilter = EquipmentFilter;
 window.BestNight = BestNight;
 window.PWA = PWA;

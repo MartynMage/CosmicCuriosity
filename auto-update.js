@@ -200,25 +200,11 @@ const AutoUpdate = {
     // ==========================================
     
     updateSunTimes() {
-        // Try to get user location, default to a central US location
+        // Use default central US location (no geolocation request)
         const defaultLat = 38.0;
         const defaultLng = -97.0;
         
-        if (navigator.geolocation && !this.cache.location) {
-            navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    this.cache.location = {
-                        lat: pos.coords.latitude,
-                        lng: pos.coords.longitude
-                    };
-                    this.calculateAndDisplaySunTimes(this.cache.location.lat, this.cache.location.lng);
-                },
-                () => {
-                    this.calculateAndDisplaySunTimes(defaultLat, defaultLng);
-                },
-                { timeout: 5000 }
-            );
-        } else if (this.cache.location) {
+        if (this.cache.location) {
             this.calculateAndDisplaySunTimes(this.cache.location.lat, this.cache.location.lng);
         } else {
             this.calculateAndDisplaySunTimes(defaultLat, defaultLng);
@@ -532,6 +518,13 @@ const AutoUpdate = {
     // ==========================================
     
     async updateAPOD() {
+        // Skip APOD fetch entirely - use static content
+        // NASA DEMO_KEY has strict rate limits (30 requests/hour, 50/day)
+        // and causes 429 errors that can disrupt page loading
+        console.log('APOD: Using static content (API rate limited)');
+        return;
+        
+        /* Original code disabled due to rate limits:
         try {
             // Check cache first
             const today = new Date().toISOString().split('T')[0];
@@ -555,6 +548,7 @@ const AutoUpdate = {
             console.log('APOD fetch error, using fallback:', error.message);
             // Keep existing content on error
         }
+        */
     },
     
     displayAPOD(data) {
