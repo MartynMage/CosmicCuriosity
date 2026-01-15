@@ -353,18 +353,29 @@
         }
 
         section {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+        }
+        
+        /* Reduce spacing between sections */
+        section + section {
+            padding-top: 1rem;
+        }
+        
+        /* First section after hero needs normal spacing */
+        .hero + section {
+            padding-top: 3rem;
         }
 
         /* Hero section */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding-top: 0;
+            padding-bottom: 2rem;
             text-align: center;
         }
 
@@ -448,7 +459,7 @@
 
         /* Section headers */
         .section-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .section-label {
@@ -472,7 +483,7 @@
             background: var(--gradient-cosmic);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 3rem;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -492,7 +503,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -540,15 +551,15 @@
         .tonight-highlights {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .highlight {
             background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 1.25rem;
             transition: all 0.3s ease;
         }
 
@@ -573,12 +584,238 @@
             color: var(--text-secondary);
         }
 
+        /* ==========================================
+           ASTRONOMY TOOLS SECTION
+           ========================================== */
+        .tools-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .tool-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .tool-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(99, 102, 241, 0.05);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tool-panel-header h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .tool-badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-glow);
+            border-radius: 100px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .tool-badge.live {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .tool-panel-content {
+            padding: 1.5rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tool-card-interactive {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card-interactive:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tool-card-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .tool-card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tool-card-content h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .tool-output {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .tool-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .tool-detail {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .tool-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .tool-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        /* ISS Display */
+        .iss-display {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .iss-stat {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .iss-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 0.25rem;
+        }
+
+        .iss-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--accent-glow);
+        }
+
+        .iss-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .iss-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Planet Display in Tools */
+        #planets-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .planet-card-mini {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .planet-card-mini:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .planet-card-mini.visible {
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .planet-card-mini .planet-symbol {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .planet-card-mini .planet-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .planet-card-mini .planet-status {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+
+        .planet-card-mini.visible .planet-status {
+            color: #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .iss-display {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            #planets-display {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Events calendar */
         .events-filters {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .filter-btn {
@@ -804,8 +1041,8 @@
             position: relative;
             border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 2rem;
-            min-height: 500px;
+            margin-bottom: 1.5rem;
+            min-height: 450px;
             display: flex;
             align-items: flex-end;
         }
@@ -821,7 +1058,7 @@
         .apod-content {
             position: relative;
             z-index: 1;
-            padding: 3rem;
+            padding: 2rem;
             background: linear-gradient(180deg, transparent 0%, rgba(5,5,16,0.95) 100%);
             width: 100%;
         }
@@ -947,53 +1184,280 @@
             color: var(--text-dim);
         }
 
-        /* Fun facts */
-        .facts-carousel {
-            overflow: hidden;
+        /* Enhanced Space Facts Carousel */
+        .facts-section {
             position: relative;
             padding: 2rem 0;
+            overflow: hidden;
         }
-
+        
+        .facts-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        
+        .facts-carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+        
         .facts-track {
             display: flex;
-            gap: 1.5rem;
-            animation: scroll 30s linear infinite;
+            gap: 1.25rem;
+            padding: 0 1.5rem;
+            transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: grab;
+            user-select: none;
         }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        
+        .facts-track:active {
+            cursor: grabbing;
+        }
+        
+        .facts-track.dragging {
+            transition: none;
         }
 
         .fact-card {
             flex-shrink: 0;
-            width: 300px;
+            width: 280px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .fact-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+        }
+        
+        .fact-card:hover::before {
+            opacity: 1;
         }
 
         .fact-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .fact-card:nth-child(2n) .fact-icon { animation-delay: -0.5s; }
+        .fact-card:nth-child(3n) .fact-icon { animation-delay: -1s; }
+        .fact-card:nth-child(4n) .fact-icon { animation-delay: -1.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .fact-category {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
         }
 
         .fact-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .fact-text strong {
             color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* Carousel Controls */
+        .facts-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .facts-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .facts-nav-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .facts-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .facts-nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .facts-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .facts-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .facts-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+        
+        .facts-dot:hover:not(.active) {
+            background: var(--text-dim);
+        }
+        
+        .facts-counter {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Auto-scroll toggle */
+        .facts-auto-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .facts-auto-toggle:hover {
+            border-color: var(--accent);
+        }
+        
+        .facts-auto-toggle.active {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .facts-auto-toggle .toggle-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            position: relative;
+        }
+        
+        .facts-auto-toggle.active .toggle-icon::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: currentColor;
+            border-radius: 50%;
+        }
+        
+        /* Gradient fade edges */
+        .facts-carousel::before,
+        .facts-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .facts-carousel::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 100%);
+        }
+        
+        .facts-carousel::after {
+            right: 0;
+            background: linear-gradient(-90deg, var(--bg-primary) 0%, transparent 100%);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .facts-container {
+                padding: 0 1rem;
+            }
+            
+            .fact-card {
+                width: 260px;
+            }
+            
+            .facts-dots {
+                display: none;
+            }
+            
+            .facts-carousel::before,
+            .facts-carousel::after {
+                width: 30px;
+            }
         }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
-            padding: 3rem 2rem 2rem;
-            margin-top: 4rem;
+            padding: 2.5rem 2rem 1.5rem;
+            margin-top: 2rem;
             background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 26, 0.5) 100%);
         }
 
@@ -1091,15 +1555,15 @@
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
             border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .location-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .location-icon {
@@ -1642,6 +2106,7 @@
             <nav aria-label="Main navigation">
                 <a href="#tonight" class="active">Tonight</a>
                 <a href="#events">Events</a>
+                <a href="#tools">Tools</a>
                 <a href="#gallery">Gallery</a>
                 <a href="#news">News</a>
             </nav>
@@ -1662,17 +2127,20 @@
             </p>
             <div class="hero-stats">
                 <div class="stat">
-                    <div class="stat-value" id="moon-phase-pct">97%</div>
-                    <div class="stat-label">Moon Illuminated</div>
+                    <div class="stat-value" id="moon-phase-pct" data-moon-illumination>--</div>
+                    <div class="stat-label"><span data-moon-phase>Moon</span> Illuminated</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">Planets Visible Tonight</div>
+                    <div class="stat-value" id="visible-planets">3</div>
+                    <div class="stat-label">Planets Visible <span data-time-label>Tonight</span></div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="days-to-next">57</div>
+                    <div class="stat-value" id="days-to-next">--</div>
                     <div class="stat-label">Days to Next Eclipse</div>
                 </div>
+            </div>
+            <div class="hero-date" style="margin-top: 2rem; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-dim);">
+                <span id="current-date" data-current-date></span> • <span data-live-time></span>
             </div>
         </section>
 
@@ -1729,23 +2197,23 @@
                 </div>
 
                 <div class="conditions-summary">
-                    <div class="conditions-title">Tonight's Viewing Conditions</div>
+                    <div class="conditions-title"><span data-time-label>Tonight</span>'s Viewing Conditions</div>
                     <div class="conditions-grid">
                         <div class="condition-item">
-                            <div class="condition-value" id="cond-darkness">Good</div>
+                            <div class="condition-value" id="cond-darkness" data-sky-darkness>Good</div>
                             <div class="condition-label">Sky Darkness</div>
                         </div>
                         <div class="condition-item">
-                            <div class="condition-value" id="cond-moonlight">High</div>
-                            <div class="condition-label">Moonlight</div>
+                            <div class="condition-value" id="cond-moonlight"><span data-moon-illumination>--</span></div>
+                            <div class="condition-label">Moon Illumination</div>
                         </div>
                         <div class="condition-item">
-                            <div class="condition-value" id="cond-sunset">5:24 PM</div>
+                            <div class="condition-value" id="cond-sunset" data-sunset>--</div>
                             <div class="condition-label">Sunset</div>
                         </div>
                         <div class="condition-item">
-                            <div class="condition-value" id="cond-best">8-10 PM</div>
-                            <div class="condition-label">Best Viewing</div>
+                            <div class="condition-value" id="cond-best" data-golden-hour>--</div>
+                            <div class="condition-label">Golden Hour</div>
                         </div>
                     </div>
                 </div>
@@ -1777,9 +2245,12 @@
                     </div>
                 </div>
                 
+                <!-- Dynamic Recommendations (populated by auto-update) -->
+                <div id="tonight-recommendations" style="margin-top: 1.5rem;"></div>
+                
                 <div class="tonight-content">
-                    <p style="color: var(--text-secondary); max-width: 700px; line-height: 1.7;">
-                        Tonight features <strong style="color: var(--text-primary);">Jupiter at its brightest</strong> following its recent opposition, dominating the eastern sky after sunset. The nearly full Moon rises early, washing out fainter stars but creating beautiful photo opportunities. Look for Venus low on the western horizon just after sunset, and Mars rising late in the evening.
+                    <p id="tonight-summary" style="color: var(--text-secondary); max-width: 700px; line-height: 1.7;">
+                        <span data-time-label>Tonight</span> features <strong style="color: var(--text-primary);">Jupiter at its brightest</strong> following its recent opposition, dominating the eastern sky after sunset. The <strong style="color: var(--text-primary);"><span data-moon-phase>Moon</span> (<span data-moon-illumination>--</span> illuminated)</strong> affects sky darkness. Look for Venus low on the western horizon just after sunset, and Mars rising late in the evening.
                     </p>
                     
                     <div class="tonight-highlights">
@@ -1789,19 +2260,19 @@
                             <div class="highlight-desc">The gas giant shines at magnitude -2.8, unmissable in the eastern sky all evening long.</div>
                         </div>
                         <div class="highlight">
-                            <div class="highlight-icon">🌙</div>
-                            <div class="highlight-title">Bright Moonlight</div>
-                            <div class="highlight-desc">The nearly full Wolf Moon rises early. Great for lunar photography, but faint objects will be harder to spot.</div>
+                            <div class="highlight-icon" data-moon-icon>🌙</div>
+                            <div class="highlight-title"><span data-moon-phase>Moon</span></div>
+                            <div class="highlight-desc"><span data-moon-illumination>--</span> illuminated. <span id="moon-tip">Great for lunar observation!</span></div>
                         </div>
                         <div class="highlight">
-                            <div class="highlight-icon">♀</div>
-                            <div class="highlight-title">Venus at Twilight</div>
-                            <div class="highlight-desc">Catch the "Evening Star" low in the west about 30 minutes after sunset before it dips below the horizon.</div>
+                            <div class="highlight-icon">🌅</div>
+                            <div class="highlight-title">Sunset</div>
+                            <div class="highlight-desc">Sunset at <span data-sunset>--</span>. Golden hour starts at <span data-golden-hour>--</span>.</div>
                         </div>
                         <div class="highlight">
                             <div class="highlight-icon">🔭</div>
-                            <div class="highlight-title">Best Viewing Time</div>
-                            <div class="highlight-desc">Between 8 PM and 10 PM local time offers the best balance of darkness and planet visibility.</div>
+                            <div class="highlight-title">Viewing Rating</div>
+                            <div class="highlight-desc">Sky darkness: <span data-sky-darkness>--</span>. <span data-viewing-rating>⭐⭐⭐</span></div>
                         </div>
                     </div>
                 </div>
@@ -1970,6 +2441,382 @@
             </div>
         </section>
 
+        <!-- Astronomy Tools -->
+        <section id="tools">
+            <div class="section-header fade-in">
+                <div class="section-label">Interactive Features</div>
+                <h2 class="section-title">Astronomy Tools</h2>
+            </div>
+
+            <div class="tools-wrapper fade-in">
+                <!-- Live Planet Positions -->
+                <div class="tool-panel" id="planet-panel">
+                    <div class="tool-panel-header">
+                        <h3>🪐 Planets Visible Tonight</h3>
+                        <span class="tool-badge live">Live</span>
+                    </div>
+                    <div class="tool-panel-content" id="planets-display">
+                        <!-- Static fallback - will be replaced by JS if available -->
+                        <div class="planet-card-mini">
+                            <div class="planet-symbol" style="color: #a0a0a0">☿</div>
+                            <div class="planet-name">Mercury</div>
+                            <div class="planet-status">Below horizon</div>
+                        </div>
+                        <div class="planet-card-mini visible">
+                            <div class="planet-symbol" style="color: #ffd700">♀</div>
+                            <div class="planet-name">Venus</div>
+                            <div class="planet-status">15° altitude</div>
+                        </div>
+                        <div class="planet-card-mini visible">
+                            <div class="planet-symbol" style="color: #ff4500">♂</div>
+                            <div class="planet-name">Mars</div>
+                            <div class="planet-status">32° altitude</div>
+                        </div>
+                        <div class="planet-card-mini visible">
+                            <div class="planet-symbol" style="color: #daa520">♃</div>
+                            <div class="planet-name">Jupiter</div>
+                            <div class="planet-status">58° altitude</div>
+                        </div>
+                        <div class="planet-card-mini visible">
+                            <div class="planet-symbol" style="color: #f4d03f">♄</div>
+                            <div class="planet-name">Saturn</div>
+                            <div class="planet-status">25° altitude</div>
+                        </div>
+                        <div class="planet-card-mini">
+                            <div class="planet-symbol" style="color: #7fffd4">⛢</div>
+                            <div class="planet-name">Uranus</div>
+                            <div class="planet-status">Below horizon</div>
+                        </div>
+                        <div class="planet-card-mini">
+                            <div class="planet-symbol" style="color: #4169e1">♆</div>
+                            <div class="planet-name">Neptune</div>
+                            <div class="planet-status">Below horizon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools Grid -->
+                <div class="tools-grid">
+                    <!-- Moon Phase Calculator -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">🌙</div>
+                        <div class="tool-card-content">
+                            <h4>Moon Phase</h4>
+                            <div class="tool-output" id="moon-output">
+                                <span class="tool-value" data-moon-phase>Waxing Gibbous</span>
+                                <span class="tool-detail"><span data-moon-illumination>78%</span> illuminated</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sun Times -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">🌅</div>
+                        <div class="tool-card-content">
+                            <h4>Sun Times</h4>
+                            <div class="tool-output">
+                                <div class="tool-row">
+                                    <span>Sunrise</span>
+                                    <span class="tool-value" data-sunrise>7:15 AM</span>
+                                </div>
+                                <div class="tool-row">
+                                    <span>Sunset</span>
+                                    <span class="tool-value" data-sunset>5:42 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Golden Hour -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">📸</div>
+                        <div class="tool-card-content">
+                            <h4>Golden Hour</h4>
+                            <div class="tool-output">
+                                <span class="tool-value" data-golden-hour>5:12 PM</span>
+                                <span class="tool-detail">Best for photography</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sky Darkness -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">🌃</div>
+                        <div class="tool-card-content">
+                            <h4>Sky Darkness</h4>
+                            <div class="tool-output">
+                                <span class="tool-value" data-sky-darkness>Good</span>
+                                <span class="tool-detail" data-viewing-rating>⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next Eclipse -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">🌑</div>
+                        <div class="tool-card-content">
+                            <h4>Next Eclipse</h4>
+                            <div class="tool-output" id="next-eclipse-display">
+                                <span class="tool-value">Mar 3, 2026</span>
+                                <span class="tool-detail">Total Lunar Eclipse</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Meteor Activity -->
+                    <div class="tool-card-interactive">
+                        <div class="tool-card-icon">🌠</div>
+                        <div class="tool-card-content">
+                            <h4>Meteor Activity</h4>
+                            <div class="tool-output" id="meteor-display">
+                                <span class="tool-value">Low</span>
+                                <span class="tool-detail">No major showers active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ISS Tracker -->
+                <div class="tool-panel" id="iss-panel">
+                    <div class="tool-panel-header">
+                        <h3>🛰️ ISS Location</h3>
+                        <span class="tool-badge">Updates every 5s</span>
+                    </div>
+                    <div class="tool-panel-content">
+                        <div class="iss-display">
+                            <div class="iss-stat">
+                                <span class="iss-label">Latitude</span>
+                                <span class="iss-value" id="iss-lat">32.5°</span>
+                            </div>
+                            <div class="iss-stat">
+                                <span class="iss-label">Longitude</span>
+                                <span class="iss-value" id="iss-lon">-95.2°</span>
+                            </div>
+                            <div class="iss-stat">
+                                <span class="iss-label">Altitude</span>
+                                <span class="iss-value" id="iss-alt">~420 km</span>
+                            </div>
+                            <div class="iss-stat">
+                                <span class="iss-label">Speed</span>
+                                <span class="iss-value" id="iss-speed">~28,000 km/h</span>
+                            </div>
+                        </div>
+                        <div class="iss-info">
+                            <p>The International Space Station orbits Earth every 90 minutes at 17,500 mph.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Amazing Space Facts Carousel -->
+        <section id="facts" class="facts-section">
+            <div class="section-header fade-in">
+                <div class="section-label">Did You Know?</div>
+                <h2 class="section-title">Amazing Space Facts</h2>
+            </div>
+
+            <div class="facts-container fade-in">
+                <div class="facts-carousel" id="facts-carousel">
+                    <div class="facts-track" id="facts-track">
+                        <!-- Solar System -->
+                        <div class="fact-card" data-category="solar-system">
+                            <div class="fact-icon">☀️</div>
+                            <div class="fact-category">Our Sun</div>
+                            <div class="fact-text">You could fit <strong>1.3 million Earths</strong> inside the Sun. It makes up 99.86% of all mass in our solar system!</div>
+                        </div>
+                        <div class="fact-card" data-category="solar-system">
+                            <div class="fact-icon">🌡️</div>
+                            <div class="fact-category">Solar Heat</div>
+                            <div class="fact-text">The Sun's core is <strong>27 million °F</strong> (15 million °C) — so hot that hydrogen atoms fuse into helium, releasing enormous energy.</div>
+                        </div>
+                        <div class="fact-card" data-category="solar-system">
+                            <div class="fact-icon">💨</div>
+                            <div class="fact-category">Solar Wind</div>
+                            <div class="fact-text">The Sun releases a <strong>solar wind</strong> that travels at 1 million mph, creating the beautiful auroras when it hits Earth's magnetic field.</div>
+                        </div>
+                        
+                        <!-- Stars & Galaxies -->
+                        <div class="fact-card" data-category="stars">
+                            <div class="fact-icon">💫</div>
+                            <div class="fact-category">Mind-Blowing Scale</div>
+                            <div class="fact-text">There are more stars in the universe than <strong>grains of sand on all Earth's beaches</strong> — about 200 billion trillion stars!</div>
+                        </div>
+                        <div class="fact-card" data-category="stars">
+                            <div class="fact-icon">⭐</div>
+                            <div class="fact-category">Star Birth</div>
+                            <div class="fact-text">A new star is born in our galaxy roughly <strong>every 50 years</strong>. The Milky Way has been making stars for over 13 billion years!</div>
+                        </div>
+                        <div class="fact-card" data-category="stars">
+                            <div class="fact-icon">🔵</div>
+                            <div class="fact-category">Blue Giants</div>
+                            <div class="fact-text">The hottest stars burn <strong>blue, not red</strong>! Blue supergiants can be 50,000°C — while red dwarfs are a "cool" 3,000°C.</div>
+                        </div>
+                        <div class="fact-card" data-category="stars">
+                            <div class="fact-icon">⚡</div>
+                            <div class="fact-category">Neutron Stars</div>
+                            <div class="fact-text">Neutron stars are so dense that a <strong>teaspoon</strong> would weigh about 6 billion tons — as much as Mount Everest!</div>
+                        </div>
+                        
+                        <!-- Planets -->
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">🪐</div>
+                            <div class="fact-category">Saturn</div>
+                            <div class="fact-text">Saturn would <strong>float in water</strong> if you could find a bathtub big enough — it's less dense than water!</div>
+                        </div>
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">🔴</div>
+                            <div class="fact-category">Venus Time</div>
+                            <div class="fact-text">A day on Venus is <strong>longer than its year</strong>! It takes 243 Earth days to rotate but only 225 days to orbit the Sun.</div>
+                        </div>
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">🌀</div>
+                            <div class="fact-category">Jupiter's Storm</div>
+                            <div class="fact-text">Jupiter's Great Red Spot is a <strong>400-year-old storm</strong> so large that Earth could fit inside it twice!</div>
+                        </div>
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">💎</div>
+                            <div class="fact-category">Diamond Rain</div>
+                            <div class="fact-text">On Neptune and Uranus, <strong>diamonds literally rain</strong> from the sky due to extreme pressure converting methane to diamond!</div>
+                        </div>
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">🌋</div>
+                            <div class="fact-category">Volcanic Moon</div>
+                            <div class="fact-text">Jupiter's moon Io has <strong>over 400 active volcanoes</strong> — making it the most volcanically active body in the solar system.</div>
+                        </div>
+                        <div class="fact-card" data-category="planets">
+                            <div class="fact-icon">🏔️</div>
+                            <div class="fact-category">Martian Giant</div>
+                            <div class="fact-text">Mars has the largest volcano in the solar system — <strong>Olympus Mons</strong> stands 72,000 feet tall, nearly 3x Mount Everest!</div>
+                        </div>
+                        
+                        <!-- Moon & Earth -->
+                        <div class="fact-card" data-category="moon">
+                            <div class="fact-icon">🌙</div>
+                            <div class="fact-category">Drifting Moon</div>
+                            <div class="fact-text">The Moon is slowly <strong>drifting away</strong> from Earth at about 1.5 inches (3.8 cm) per year. In a billion years, it'll be too far for total eclipses!</div>
+                        </div>
+                        <div class="fact-card" data-category="moon">
+                            <div class="fact-icon">👣</div>
+                            <div class="fact-category">Lunar Footprints</div>
+                            <div class="fact-text">The footprints left by Apollo astronauts will remain on the Moon for <strong>millions of years</strong> — there's no wind or weather to erode them.</div>
+                        </div>
+                        <div class="fact-card" data-category="moon">
+                            <div class="fact-icon">🌊</div>
+                            <div class="fact-category">Tidal Lock</div>
+                            <div class="fact-text">The Moon is <strong>tidally locked</strong> to Earth — that's why we always see the same side. The "dark side" isn't dark, just hidden!</div>
+                        </div>
+                        
+                        <!-- Light & Distance -->
+                        <div class="fact-card" data-category="light">
+                            <div class="fact-icon">⏱️</div>
+                            <div class="fact-category">Sunlight Travel</div>
+                            <div class="fact-text">Sunlight takes <strong>8 minutes 20 seconds</strong> to reach Earth. If the Sun vanished, we wouldn't know for 8 minutes!</div>
+                        </div>
+                        <div class="fact-card" data-category="light">
+                            <div class="fact-icon">🔭</div>
+                            <div class="fact-category">Looking Back in Time</div>
+                            <div class="fact-text">When you look at the Andromeda Galaxy, you're seeing light from <strong>2.5 million years ago</strong> — true time travel!</div>
+                        </div>
+                        <div class="fact-card" data-category="light">
+                            <div class="fact-icon">📡</div>
+                            <div class="fact-category">Voyager Distance</div>
+                            <div class="fact-text">Voyager 1 is <strong>15 billion miles</strong> away. A signal from it takes over 22 hours to reach Earth at light speed!</div>
+                        </div>
+                        
+                        <!-- Black Holes & Extreme -->
+                        <div class="fact-card" data-category="extreme">
+                            <div class="fact-icon">🕳️</div>
+                            <div class="fact-category">Black Holes</div>
+                            <div class="fact-text">If you fell into a black hole, <strong>spaghettification</strong> would stretch you into a long thin strand due to extreme tidal forces!</div>
+                        </div>
+                        <div class="fact-card" data-category="extreme">
+                            <div class="fact-icon">🌌</div>
+                            <div class="fact-category">Cosmic Collision</div>
+                            <div class="fact-text">The Milky Way and Andromeda galaxies will <strong>collide in 4.5 billion years</strong>. Don't worry though — stars are so far apart, direct collisions are rare!</div>
+                        </div>
+                        <div class="fact-card" data-category="extreme">
+                            <div class="fact-icon">💥</div>
+                            <div class="fact-category">Supernovae</div>
+                            <div class="fact-text">A supernova explosion releases more energy in seconds than our Sun will produce in its <strong>entire 10-billion-year lifetime</strong>!</div>
+                        </div>
+                        <div class="fact-card" data-category="extreme">
+                            <div class="fact-icon">🧲</div>
+                            <div class="fact-category">Magnetars</div>
+                            <div class="fact-text">Magnetars have magnetic fields <strong>1 quadrillion times</strong> stronger than Earth's — strong enough to erase your credit cards from the Moon!</div>
+                        </div>
+                        
+                        <!-- Space Exploration -->
+                        <div class="fact-card" data-category="exploration">
+                            <div class="fact-icon">🚀</div>
+                            <div class="fact-category">ISS Speed</div>
+                            <div class="fact-text">The International Space Station orbits at <strong>17,500 mph</strong> — completing a full orbit every 90 minutes. Astronauts see 16 sunrises daily!</div>
+                        </div>
+                        <div class="fact-card" data-category="exploration">
+                            <div class="fact-icon">🧑‍🚀</div>
+                            <div class="fact-category">Space Growth</div>
+                            <div class="fact-text">Astronauts grow <strong>up to 2 inches taller</strong> in space because their spines decompress without gravity. They shrink back on Earth!</div>
+                        </div>
+                        <div class="fact-card" data-category="exploration">
+                            <div class="fact-icon">🎂</div>
+                            <div class="fact-category">Space Age</div>
+                            <div class="fact-text">On Mercury, you'd have <strong>4 birthdays per Earth year</strong>! A year there is just 88 Earth days. On Neptune, one year = 165 Earth years!</div>
+                        </div>
+                        
+                        <!-- Universe Mysteries -->
+                        <div class="fact-card" data-category="mysteries">
+                            <div class="fact-icon">🔮</div>
+                            <div class="fact-category">Dark Matter</div>
+                            <div class="fact-text"><strong>85% of the universe</strong> is made of dark matter — we can't see it, but we know it exists from its gravitational effects!</div>
+                        </div>
+                        <div class="fact-card" data-category="mysteries">
+                            <div class="fact-icon">🫧</div>
+                            <div class="fact-category">Cosmic Void</div>
+                            <div class="fact-text">The Boötes Void is a <strong>330 million light-year</strong> empty region of space containing almost no galaxies — one of the universe's greatest mysteries.</div>
+                        </div>
+                        <div class="fact-card" data-category="mysteries">
+                            <div class="fact-icon">🎵</div>
+                            <div class="fact-category">Space Sound</div>
+                            <div class="fact-text">Space isn't completely silent! Black holes emit <strong>ultra-low frequency sounds</strong> — a B-flat, 57 octaves below middle C!</div>
+                        </div>
+                        <div class="fact-card" data-category="mysteries">
+                            <div class="fact-icon">🍳</div>
+                            <div class="fact-category">Cosmic Recipe</div>
+                            <div class="fact-text">The center of our galaxy <strong>smells like rum</strong> and <strong>tastes like raspberries</strong> — due to ethyl formate molecules floating in space!</div>
+                        </div>
+                        <div class="fact-card" data-category="mysteries">
+                            <div class="fact-icon">🌍</div>
+                            <div class="fact-category">Pale Blue Dot</div>
+                            <div class="fact-text">From Saturn, Earth is just <strong>a tiny blue pixel</strong>. Voyager 1 photographed this "Pale Blue Dot" from 4 billion miles away in 1990.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="facts-controls">
+                    <button class="facts-nav-btn" id="facts-prev" aria-label="Previous facts">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="facts-dots" id="facts-dots"></div>
+                    
+                    <span class="facts-counter" id="facts-counter">1 / 30</span>
+                    
+                    <button class="facts-nav-btn" id="facts-next" aria-label="Next facts">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="facts-auto-toggle active" id="facts-auto-toggle">
+                        <span class="toggle-icon"></span>
+                        <span>Auto-scroll</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Space Gallery -->
         <section id="gallery">
             <div class="section-header fade-in">
@@ -1979,7 +2826,9 @@
 
             <!-- APOD Hero -->
             <div class="apod-hero fade-in" id="apod-container">
-                <img src="https://www.nasa.gov/wp-content/uploads/2023/03/stsci-01gfnn3pwjmy4rqxkz585bc4qh.png" alt="NASA Astronomy Picture of the Day - Carina Nebula" id="apod-image" loading="lazy">
+                <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001738/GSFC_20171208_Archive_e001738~large.jpg" 
+                     data-fallback="https://images-assets.nasa.gov/image/PIA17046/PIA17046~large.jpg"
+                     alt="NASA Astronomy Picture of the Day - Carina Nebula" id="apod-image" loading="lazy">
                 <div class="apod-content">
                     <span class="apod-badge">✦ Picture of the Day</span>
                     <h3 class="apod-title" id="apod-title">Cosmic Cliffs in the Carina Nebula</h3>
@@ -1989,45 +2838,51 @@
 
             <div class="gallery-grid fade-in">
                 <div class="gallery-item gallery-featured" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pia22946.jpg" alt="Jupiter's Great Red Spot" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA22946/PIA22946~large.jpg" 
+                         alt="Jupiter's Great Red Spot" loading="lazy">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Jupiter's Great Red Spot</div>
                         <div class="gallery-credit">Credit: NASA/JPL-Caltech/SwRI/MSSS</div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pillarsofcreation.jpg" alt="Pillars of Creation" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA17563/PIA17563~large.jpg" 
+                         alt="Pillars of Creation" loading="lazy">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Pillars of Creation</div>
                         <div class="gallery-credit">Credit: NASA/ESA/Hubble</div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pia21046.jpg" alt="Saturn's Rings" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA21046/PIA21046~large.jpg" 
+                         alt="Saturn's Rings" loading="lazy">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Saturn's Majestic Rings</div>
                         <div class="gallery-credit">Credit: NASA/JPL-Caltech</div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/06/pia25969.jpg" alt="Mars Surface" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA24546/PIA24546~large.jpg" 
+                         alt="Mars Surface" loading="lazy">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Mars Perseverance Rover View</div>
                         <div class="gallery-credit">Credit: NASA/JPL</div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pia17171.jpg" alt="Earth from Saturn" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA17171/PIA17171~large.jpg" 
+                         alt="Earth from Saturn" loading="lazy">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Earth from Saturn</div>
                         <div class="gallery-credit">Credit: NASA/JPL-Caltech</div>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
-                    <img src="https://www.nasa.gov/wp-content/uploads/2023/03/stsci-01gfnn3pwjmy4rqxkz585bc4qh.png" alt="Carina Nebula" loading="lazy">
+                    <img src="https://images-assets.nasa.gov/image/PIA18033/PIA18033~large.jpg" 
+                         alt="Andromeda Galaxy" loading="lazy">
                     <div class="gallery-overlay">
-                        <div class="gallery-title">Carina Nebula (JWST)</div>
-                        <div class="gallery-credit">Credit: NASA/ESA/CSA/STScI</div>
+                        <div class="gallery-title">Andromeda Galaxy</div>
+                        <div class="gallery-credit">Credit: NASA/JPL-Caltech</div>
                     </div>
                 </div>
             </div>
@@ -2043,7 +2898,7 @@
             <div class="news-grid fade-in">
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2024/09/ksc-20240904-ph-kls01-0009orig.jpg" alt="Artemis II Mission" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/KSC-20220316-PH-KLS02_0040/KSC-20220316-PH-KLS02_0040~large.jpg" alt="Artemis II Mission" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA</div>
@@ -2055,7 +2910,7 @@
 
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2023/09/main-image-deep-field-smacs-0723-702x702-1.jpg" alt="James Webb Space Telescope" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001925/GSFC_20171208_Archive_e001925~large.jpg" alt="James Webb Space Telescope" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA / ESA</div>
@@ -2067,7 +2922,7 @@
 
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2023/06/iss068e027836orig.jpg" alt="International Space Station" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/iss067e147386/iss067e147386~large.jpg" alt="International Space Station" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA</div>
@@ -2079,7 +2934,7 @@
 
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2023/03/702616main-702616main-pia16239-full-full.jpg" alt="Dragonfly Mission to Titan" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/PIA14316/PIA14316~large.jpg" alt="Dragonfly Mission to Titan" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA / JPL</div>
@@ -2091,7 +2946,7 @@
 
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2023/03/voyager-702x702-1.jpg" alt="Voyager 1 Spacecraft" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/PIA17462/PIA17462~large.jpg" alt="Voyager 1 Spacecraft" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA</div>
@@ -2103,7 +2958,7 @@
 
                 <div class="news-card">
                     <div class="news-image">
-                        <img src="https://www.nasa.gov/wp-content/uploads/2023/03/52880432928-1de20959dd-o-702x702-1.jpg" alt="Nancy Grace Roman Space Telescope" loading="lazy">
+                        <img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000131/GSFC_20171208_Archive_e000131~large.jpg" alt="Nancy Grace Roman Space Telescope" loading="lazy">
                     </div>
                     <div class="news-body">
                         <div class="news-source">NASA</div>
@@ -2114,71 +2969,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- Fun Facts Carousel -->
-        <section id="facts">
-            <div class="section-header fade-in">
-                <div class="section-label">Did You Know?</div>
-                <h2 class="section-title">Amazing Space Facts</h2>
-            </div>
-
-            <div class="facts-carousel fade-in">
-                <div class="facts-track">
-                    <div class="fact-card">
-                        <div class="fact-icon">🌍</div>
-                        <div class="fact-text">You could fit <strong>1.3 million Earths</strong> inside the Sun. Our star is truly massive!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">💫</div>
-                        <div class="fact-text">There are more stars in the universe than <strong>grains of sand on all Earth's beaches</strong> — about 200 billion trillion!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🪐</div>
-                        <div class="fact-text">Saturn would <strong>float in water</strong> if you could find a bathtub big enough — it's less dense than water!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🌙</div>
-                        <div class="fact-text">The Moon is slowly <strong>drifting away</strong> from Earth at about 1.5 inches per year.</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">☀️</div>
-                        <div class="fact-text">Sunlight takes <strong>8 minutes and 20 seconds</strong> to travel from the Sun to Earth.</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🔴</div>
-                        <div class="fact-text">A day on Venus is <strong>longer than a year</strong> on Venus — it rotates very slowly!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">⚡</div>
-                        <div class="fact-text">Neutron stars are so dense that a <strong>teaspoon</strong> would weigh about 6 billion tons!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🌌</div>
-                        <div class="fact-text">The Milky Way and Andromeda galaxies will <strong>collide in 4.5 billion years</strong> — don't worry, we'll be fine!</div>
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="fact-card">
-                        <div class="fact-icon">🌍</div>
-                        <div class="fact-text">You could fit <strong>1.3 million Earths</strong> inside the Sun. Our star is truly massive!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">💫</div>
-                        <div class="fact-text">There are more stars in the universe than <strong>grains of sand on all Earth's beaches</strong> — about 200 billion trillion!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🪐</div>
-                        <div class="fact-text">Saturn would <strong>float in water</strong> if you could find a bathtub big enough — it's less dense than water!</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-icon">🌙</div>
-                        <div class="fact-text">The Moon is slowly <strong>drifting away</strong> from Earth at about 1.5 inches per year.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
@@ -2205,6 +2997,7 @@
                     <h4>Explore</h4>
                     <a href="#tonight">Tonight's Sky</a>
                     <a href="#events">Celestial Events</a>
+                    <a href="#tools">Astronomy Tools</a>
                     <a href="#gallery">Space Gallery</a>
                     <a href="#news">Space News</a>
                 </div>
@@ -2218,7 +3011,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 CosmicCuriosity — Built with ✦ for curious minds everywhere</p>
+            <p>© <span data-current-year>2026</span> CosmicCuriosity — Built with ✦ for curious minds everywhere</p>
             <p class="footer-credits">Data from NASA Open APIs • Images courtesy of NASA/ESA • Not affiliated with NASA</p>
         </div>
     </footer>
@@ -2821,17 +3614,664 @@
             this.style.borderColor = '';
         });
 
-        // Handle image loading errors gracefully
-        document.querySelectorAll('.news-image img, .gallery-item img').forEach(img => {
-            img.addEventListener('error', function() {
-                this.setAttribute('data-failed', 'true');
-                // Try a fallback placeholder
-                this.style.display = 'none';
-            });
-        });
+        // ==========================================
+        // ROBUST IMAGE LOADING SYSTEM
+        // Retry logic, fallbacks, and placeholders
+        // ==========================================
+        
+        const ImageLoader = {
+            // Fallback images for different categories
+            fallbacks: {
+                space: [
+                    'https://images-assets.nasa.gov/image/PIA17171/PIA17171~thumb.jpg',
+                    'https://images-assets.nasa.gov/image/PIA22946/PIA22946~thumb.jpg',
+                    'https://images-assets.nasa.gov/image/PIA21046/PIA21046~thumb.jpg',
+                    'https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001738/GSFC_20171208_Archive_e001738~thumb.jpg',
+                    'https://images-assets.nasa.gov/image/PIA18033/PIA18033~thumb.jpg'
+                ],
+                planet: [
+                    'https://images-assets.nasa.gov/image/PIA22946/PIA22946~medium.jpg',
+                    'https://images-assets.nasa.gov/image/PIA21046/PIA21046~medium.jpg',
+                    'https://images-assets.nasa.gov/image/PIA17171/PIA17171~medium.jpg'
+                ],
+                nebula: [
+                    'https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001738/GSFC_20171208_Archive_e001738~medium.jpg',
+                    'https://images-assets.nasa.gov/image/PIA18033/PIA18033~medium.jpg'
+                ]
+            },
+            
+            // SVG placeholder with space theme
+            placeholder: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%230a0a1a' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%231a1a3e'/%3E%3Ccircle cx='320' cy='80' r='3' fill='%23ffffff' opacity='0.5'/%3E%3Ccircle cx='80' cy='220' r='2' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='350' cy='200' r='2' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='50' cy='100' r='2' fill='%23ffffff' opacity='0.5'/%3E%3Ccircle cx='150' cy='50' r='1.5' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='280' cy='250' r='1.5' fill='%23ffffff' opacity='0.3'/%3E%3Ctext x='200' y='155' text-anchor='middle' fill='%236366f1' font-family='sans-serif' font-size='24'%3E✦%3C/text%3E%3Ctext x='200' y='185' text-anchor='middle' fill='%239898b0' font-family='sans-serif' font-size='12'%3ELoading image...%3C/text%3E%3C/svg%3E`,
+            
+            // Failed placeholder
+            failedPlaceholder: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%230a0a1a' width='400' height='300'/%3E%3Ccircle cx='200' cy='130' r='40' fill='none' stroke='%233a3a5a' stroke-width='3'/%3E%3Cline x1='175' y1='105' x2='225' y2='155' stroke='%233a3a5a' stroke-width='3'/%3E%3Ctext x='200' y='200' text-anchor='middle' fill='%235a5a78' font-family='sans-serif' font-size='14'%3EImage unavailable%3C/text%3E%3Ctext x='200' y='220' text-anchor='middle' fill='%233a3a5a' font-family='sans-serif' font-size='11'%3EClick to retry%3C/text%3E%3C/svg%3E`,
+            
+            maxRetries: 3,
+            retryDelay: 1000, // ms
+            
+            init() {
+                // Process all images
+                document.querySelectorAll('.gallery-item img, .news-image img, .apod-hero img').forEach(img => {
+                    this.setupImage(img);
+                });
+                
+                // Watch for dynamically added images
+                this.observeNewImages();
+                
+                console.log('🖼️ Image loader initialized');
+            },
+            
+            setupImage(img) {
+                // Skip if already processed
+                if (img.dataset.loaderProcessed) return;
+                img.dataset.loaderProcessed = 'true';
+                
+                // Store original src
+                const originalSrc = img.src || img.dataset.src;
+                img.dataset.originalSrc = originalSrc;
+                img.dataset.retryCount = '0';
+                
+                // Set loading placeholder
+                if (!img.complete) {
+                    img.dataset.loadingPlaceholder = 'true';
+                }
+                
+                // Add loading class to parent
+                const parent = img.closest('.gallery-item, .news-image, .apod-hero');
+                if (parent) {
+                    parent.classList.add('image-loading');
+                }
+                
+                // Handle load success
+                img.addEventListener('load', () => this.onImageLoad(img));
+                
+                // Handle load error
+                img.addEventListener('error', () => this.onImageError(img));
+                
+                // If image was already cached and loaded, trigger load
+                if (img.complete && img.naturalWidth > 0) {
+                    this.onImageLoad(img);
+                }
+            },
+            
+            onImageLoad(img) {
+                const parent = img.closest('.gallery-item, .news-image, .apod-hero');
+                if (parent) {
+                    parent.classList.remove('image-loading', 'image-failed');
+                    parent.classList.add('image-loaded');
+                }
+                img.style.opacity = '1';
+                delete img.dataset.loadingPlaceholder;
+            },
+            
+            onImageError(img) {
+                const retryCount = parseInt(img.dataset.retryCount || '0');
+                const originalSrc = img.dataset.originalSrc;
+                
+                console.log(`Image failed: ${originalSrc} (attempt ${retryCount + 1})`);
+                
+                if (retryCount < this.maxRetries) {
+                    // Retry with delay
+                    img.dataset.retryCount = (retryCount + 1).toString();
+                    
+                    setTimeout(() => {
+                        // Try different URL variations
+                        let newSrc = originalSrc;
+                        
+                        if (retryCount === 0) {
+                            // First retry: try adding a cache buster
+                            newSrc = originalSrc + (originalSrc.includes('?') ? '&' : '?') + 't=' + Date.now();
+                        } else if (retryCount === 1) {
+                            // Second retry: try NASA images API as fallback
+                            newSrc = this.getNasaFallback(originalSrc);
+                        } else {
+                            // Third retry: try a different fallback
+                            newSrc = this.getRandomFallback();
+                        }
+                        
+                        console.log(`Retrying image: ${newSrc}`);
+                        img.src = newSrc;
+                    }, this.retryDelay * (retryCount + 1));
+                } else {
+                    // All retries failed, show fallback
+                    this.showFallback(img);
+                }
+            },
+            
+            getNasaFallback(originalSrc) {
+                // Try to extract image ID from NASA URL and use their images API
+                const piaMatch = originalSrc.match(/pia(\d+)/i);
+                if (piaMatch) {
+                    return `https://images-assets.nasa.gov/image/PIA${piaMatch[1]}/PIA${piaMatch[1]}~medium.jpg`;
+                }
+                
+                // Try general NASA image patterns
+                if (originalSrc.includes('nasa.gov')) {
+                    // Try images-assets subdomain
+                    return originalSrc.replace('www.nasa.gov/wp-content/uploads', 'images-assets.nasa.gov/image');
+                }
+                
+                return this.getRandomFallback();
+            },
+            
+            getRandomFallback() {
+                const allFallbacks = [
+                    ...this.fallbacks.space,
+                    ...this.fallbacks.planet,
+                    ...this.fallbacks.nebula
+                ];
+                return allFallbacks[Math.floor(Math.random() * allFallbacks.length)];
+            },
+            
+            showFallback(img) {
+                const parent = img.closest('.gallery-item, .news-image, .apod-hero');
+                
+                // Use a random NASA image as fallback instead of placeholder
+                const fallbackSrc = this.getRandomFallback();
+                img.src = fallbackSrc;
+                
+                // Mark as failed but still show something
+                if (parent) {
+                    parent.classList.remove('image-loading');
+                    parent.classList.add('image-fallback');
+                }
+                
+                // Add click to retry functionality
+                img.style.cursor = 'pointer';
+                img.title = 'Click to retry loading original image';
+                
+                const retryHandler = () => {
+                    img.dataset.retryCount = '0';
+                    img.src = img.dataset.originalSrc;
+                    img.removeEventListener('click', retryHandler);
+                    img.style.cursor = '';
+                    img.title = '';
+                };
+                
+                img.addEventListener('click', retryHandler, { once: true });
+            },
+            
+            observeNewImages() {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        mutation.addedNodes.forEach((node) => {
+                            if (node.nodeType === 1) {
+                                // Check if the node itself is an image
+                                if (node.tagName === 'IMG') {
+                                    this.setupImage(node);
+                                }
+                                // Check for images within the node
+                                node.querySelectorAll?.('img').forEach(img => {
+                                    this.setupImage(img);
+                                });
+                            }
+                        });
+                    });
+                });
+                
+                observer.observe(document.body, { childList: true, subtree: true });
+            }
+        };
+        
+        // Add CSS for image loading states
+        const imageLoaderStyles = document.createElement('style');
+        imageLoaderStyles.textContent = `
+            /* Image loading states */
+            .image-loading {
+                position: relative;
+            }
+            
+            .image-loading::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-hover) 50%, var(--bg-card) 75%);
+                background-size: 200% 100%;
+                animation: image-shimmer 1.5s infinite;
+                z-index: 1;
+            }
+            
+            .image-loading::after {
+                content: '✦';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 2rem;
+                color: var(--accent-glow);
+                z-index: 2;
+                animation: image-pulse 1.5s ease-in-out infinite;
+            }
+            
+            @keyframes image-shimmer {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+            }
+            
+            @keyframes image-pulse {
+                0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+                50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            }
+            
+            .image-loading img {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .image-loaded img {
+                opacity: 1;
+            }
+            
+            .image-loaded::before,
+            .image-loaded::after {
+                display: none;
+            }
+            
+            .image-fallback {
+                position: relative;
+            }
+            
+            .image-fallback::after {
+                content: '↻ Click to retry';
+                position: absolute;
+                bottom: 8px;
+                right: 8px;
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+                background: rgba(0, 0, 0, 0.7);
+                color: var(--text-dim);
+                border-radius: 4px;
+                z-index: 5;
+                pointer-events: none;
+            }
+            
+            /* Smooth image appearance */
+            .gallery-item img,
+            .news-image img,
+            .apod-hero img {
+                transition: opacity 0.3s ease, transform 0.5s ease;
+            }
+        `;
+        document.head.appendChild(imageLoaderStyles);
+        
+        // Initialize image loader
+        ImageLoader.init();
+        
+        // ==========================================
+        // SPACE FACTS CAROUSEL
+        // Draggable, auto-scroll, touch support
+        // ==========================================
+        
+        const FactsCarousel = {
+            track: null,
+            cards: [],
+            currentIndex: 0,
+            cardWidth: 295, // card width + gap
+            visibleCards: 4,
+            autoScrollInterval: null,
+            autoScrollEnabled: true,
+            autoScrollDelay: 4000,
+            isDragging: false,
+            startX: 0,
+            scrollLeft: 0,
+            
+            init() {
+                this.track = document.getElementById('facts-track');
+                if (!this.track) return;
+                
+                this.cards = Array.from(this.track.querySelectorAll('.fact-card'));
+                this.totalCards = this.cards.length;
+                
+                // Calculate visible cards based on viewport
+                this.calculateVisibleCards();
+                
+                // Setup controls
+                this.setupControls();
+                
+                // Setup drag/touch
+                this.setupDrag();
+                
+                // Setup dots
+                this.setupDots();
+                
+                // Start auto-scroll
+                this.startAutoScroll();
+                
+                // Handle resize
+                window.addEventListener('resize', () => this.handleResize());
+                
+                // Pause on hover
+                const carousel = document.getElementById('facts-carousel');
+                carousel.addEventListener('mouseenter', () => this.pauseAutoScroll());
+                carousel.addEventListener('mouseleave', () => {
+                    if (this.autoScrollEnabled) this.startAutoScroll();
+                });
+                
+                // Update counter
+                this.updateCounter();
+                
+                console.log('🎠 Facts carousel initialized');
+            },
+            
+            calculateVisibleCards() {
+                const containerWidth = document.querySelector('.facts-container')?.offsetWidth || window.innerWidth;
+                this.visibleCards = Math.floor((containerWidth - 60) / this.cardWidth);
+                this.visibleCards = Math.max(1, Math.min(this.visibleCards, 5));
+            },
+            
+            setupControls() {
+                const prevBtn = document.getElementById('facts-prev');
+                const nextBtn = document.getElementById('facts-next');
+                const autoToggle = document.getElementById('facts-auto-toggle');
+                
+                prevBtn?.addEventListener('click', () => {
+                    this.prev();
+                    this.restartAutoScroll();
+                });
+                
+                nextBtn?.addEventListener('click', () => {
+                    this.next();
+                    this.restartAutoScroll();
+                });
+                
+                autoToggle?.addEventListener('click', () => {
+                    this.toggleAutoScroll();
+                });
+            },
+            
+            setupDots() {
+                const dotsContainer = document.getElementById('facts-dots');
+                if (!dotsContainer) return;
+                
+                // Create dot groups (every 4 cards)
+                const numDots = Math.ceil(this.totalCards / this.visibleCards);
+                
+                for (let i = 0; i < Math.min(numDots, 8); i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'facts-dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => {
+                        this.goTo(i * this.visibleCards);
+                        this.restartAutoScroll();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            },
+            
+            setupDrag() {
+                // Mouse events
+                this.track.addEventListener('mousedown', (e) => this.startDrag(e));
+                document.addEventListener('mousemove', (e) => this.drag(e));
+                document.addEventListener('mouseup', () => this.endDrag());
+                
+                // Touch events
+                this.track.addEventListener('touchstart', (e) => this.startDrag(e), { passive: true });
+                this.track.addEventListener('touchmove', (e) => this.drag(e), { passive: true });
+                this.track.addEventListener('touchend', () => this.endDrag());
+                
+                // Prevent image drag
+                this.track.addEventListener('dragstart', (e) => e.preventDefault());
+            },
+            
+            startDrag(e) {
+                this.isDragging = true;
+                this.track.classList.add('dragging');
+                this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                this.scrollLeft = this.currentIndex * this.cardWidth;
+                this.pauseAutoScroll();
+            },
+            
+            drag(e) {
+                if (!this.isDragging) return;
+                
+                const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                const walk = (this.startX - x);
+                const newPosition = this.scrollLeft + walk;
+                
+                this.track.style.transform = `translateX(-${newPosition}px)`;
+            },
+            
+            endDrag() {
+                if (!this.isDragging) return;
+                
+                this.isDragging = false;
+                this.track.classList.remove('dragging');
+                
+                // Snap to nearest card
+                const currentTransform = this.track.style.transform;
+                const match = currentTransform.match(/translateX\(-?(\d+)/);
+                if (match) {
+                    const currentPos = parseInt(match[1]);
+                    const newIndex = Math.round(currentPos / this.cardWidth);
+                    this.goTo(Math.max(0, Math.min(newIndex, this.totalCards - this.visibleCards)));
+                }
+                
+                if (this.autoScrollEnabled) this.startAutoScroll();
+            },
+            
+            prev() {
+                this.goTo(this.currentIndex - this.visibleCards);
+            },
+            
+            next() {
+                this.goTo(this.currentIndex + this.visibleCards);
+            },
+            
+            goTo(index) {
+                // Wrap around
+                if (index < 0) {
+                    index = Math.max(0, this.totalCards - this.visibleCards);
+                } else if (index > this.totalCards - this.visibleCards) {
+                    index = 0;
+                }
+                
+                this.currentIndex = index;
+                this.track.style.transform = `translateX(-${index * this.cardWidth}px)`;
+                
+                this.updateDots();
+                this.updateCounter();
+            },
+            
+            updateDots() {
+                const dots = document.querySelectorAll('.facts-dot');
+                const activeDotIndex = Math.floor(this.currentIndex / this.visibleCards);
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === activeDotIndex);
+                });
+            },
+            
+            updateCounter() {
+                const counter = document.getElementById('facts-counter');
+                if (counter) {
+                    const current = Math.min(this.currentIndex + this.visibleCards, this.totalCards);
+                    counter.textContent = `${this.currentIndex + 1}-${current} / ${this.totalCards}`;
+                }
+            },
+            
+            startAutoScroll() {
+                if (this.autoScrollInterval) return;
+                
+                this.autoScrollInterval = setInterval(() => {
+                    this.next();
+                }, this.autoScrollDelay);
+            },
+            
+            pauseAutoScroll() {
+                if (this.autoScrollInterval) {
+                    clearInterval(this.autoScrollInterval);
+                    this.autoScrollInterval = null;
+                }
+            },
+            
+            restartAutoScroll() {
+                this.pauseAutoScroll();
+                if (this.autoScrollEnabled) {
+                    setTimeout(() => this.startAutoScroll(), 1000);
+                }
+            },
+            
+            toggleAutoScroll() {
+                this.autoScrollEnabled = !this.autoScrollEnabled;
+                const toggle = document.getElementById('facts-auto-toggle');
+                
+                if (this.autoScrollEnabled) {
+                    toggle?.classList.add('active');
+                    this.startAutoScroll();
+                } else {
+                    toggle?.classList.remove('active');
+                    this.pauseAutoScroll();
+                }
+            },
+            
+            handleResize() {
+                this.calculateVisibleCards();
+                // Reposition to valid index
+                this.goTo(Math.min(this.currentIndex, this.totalCards - this.visibleCards));
+            }
+        };
+        
+        // Initialize facts carousel when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => FactsCarousel.init());
+        } else {
+            FactsCarousel.init();
+        }
     </script>
+    
+    <!-- Astronomy Engine Core -->
+    <script src="astro-engine.js"></script>
+    
+    <!-- Star Map -->
+    <script src="starmap.js"></script>
     
     <!-- Enhanced Features Module -->
     <script src="features.js"></script>
+    
+    <!-- Additional Feature Modules -->
+    <script src="astro-features.js"></script>
+    <script src="data-features.js"></script>
+    <script src="ui-advanced.js"></script>
+    
+    <!-- UX Improvements (Sidebar, Smart Cards, Micro-interactions) -->
+    <script src="ux-improvements.js"></script>
+    
+    <!-- Auto-Update System (Keeps data accurate over time) -->
+    <script src="auto-update.js"></script>
+    
+    <!-- Initialize All Features -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize core systems
+            if (window.Toast) Toast.init();
+            if (window.ThemeManager) ThemeManager.init();
+            if (window.SoundManager) SoundManager.init();
+            if (window.KeyboardShortcuts) KeyboardShortcuts.init();
+            
+            // Initialize Tools Section
+            initToolsSection();
+            
+            console.log('✨ Cosmic Curiosity fully loaded!');
+        });
+        
+        // Simple Tools Section Initialization
+        function initToolsSection() {
+            // Populate planets display
+            const planetsContainer = document.getElementById('planets-display');
+            if (planetsContainer && window.AstroEngine) {
+                const planets = AstroEngine.getAllPlanets(new Date());
+                planetsContainer.innerHTML = planets.map(p => `
+                    <div class="planet-card-mini ${p.visible ? 'visible' : ''}">
+                        <div class="planet-symbol" style="color: ${p.color}">${p.symbol}</div>
+                        <div class="planet-name">${p.name}</div>
+                        <div class="planet-status">${p.visible ? `${p.altitude.toFixed(0)}° altitude` : 'Below horizon'}</div>
+                    </div>
+                `).join('');
+            } else if (planetsContainer) {
+                // Fallback if AstroEngine not loaded
+                const fallbackPlanets = [
+                    { symbol: '☿', name: 'Mercury', visible: false, color: '#a0a0a0' },
+                    { symbol: '♀', name: 'Venus', visible: true, alt: 15, color: '#ffd700' },
+                    { symbol: '♂', name: 'Mars', visible: true, alt: 32, color: '#ff4500' },
+                    { symbol: '♃', name: 'Jupiter', visible: true, alt: 58, color: '#daa520' },
+                    { symbol: '♄', name: 'Saturn', visible: true, alt: 25, color: '#f4d03f' },
+                    { symbol: '⛢', name: 'Uranus', visible: false, color: '#7fffd4' },
+                    { symbol: '♆', name: 'Neptune', visible: false, color: '#4169e1' }
+                ];
+                planetsContainer.innerHTML = fallbackPlanets.map(p => `
+                    <div class="planet-card-mini ${p.visible ? 'visible' : ''}">
+                        <div class="planet-symbol" style="color: ${p.color}">${p.symbol}</div>
+                        <div class="planet-name">${p.name}</div>
+                        <div class="planet-status">${p.visible ? `${p.alt}° altitude` : 'Below horizon'}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Update ISS position (simulated orbital position)
+            updateISSPosition();
+            setInterval(updateISSPosition, 5000);
+            
+            // Update meteor activity based on date
+            updateMeteorActivity();
+        }
+        
+        function updateISSPosition() {
+            // Simulate ISS orbital position (changes over time)
+            const now = Date.now();
+            const orbitalPeriod = 92.65 * 60 * 1000; // 92.65 minutes in ms
+            const phase = (now % orbitalPeriod) / orbitalPeriod;
+            
+            // ISS orbit is inclined 51.6°
+            const lat = 51.6 * Math.sin(phase * 2 * Math.PI);
+            const lon = ((phase * 360 + 180) % 360) - 180;
+            
+            const latEl = document.getElementById('iss-lat');
+            const lonEl = document.getElementById('iss-lon');
+            
+            if (latEl) latEl.textContent = lat.toFixed(2) + '°';
+            if (lonEl) lonEl.textContent = lon.toFixed(2) + '°';
+        }
+        
+        function updateMeteorActivity() {
+            const meteorEl = document.getElementById('meteor-display');
+            if (!meteorEl) return;
+            
+            const now = new Date();
+            const month = now.getMonth();
+            const day = now.getDate();
+            
+            // Check for active meteor showers
+            const showers = [
+                { name: 'Quadrantids', peak: [0, 3], rate: 120 },
+                { name: 'Lyrids', peak: [3, 22], rate: 18 },
+                { name: 'Eta Aquariids', peak: [4, 6], rate: 50 },
+                { name: 'Perseids', peak: [7, 12], rate: 100 },
+                { name: 'Orionids', peak: [9, 21], rate: 20 },
+                { name: 'Leonids', peak: [10, 17], rate: 15 },
+                { name: 'Geminids', peak: [11, 14], rate: 150 }
+            ];
+            
+            let activeShower = null;
+            for (const shower of showers) {
+                const [peakMonth, peakDay] = shower.peak;
+                const dayDiff = Math.abs((month * 30 + day) - (peakMonth * 30 + peakDay));
+                if (dayDiff <= 7) {
+                    activeShower = shower;
+                    break;
+                }
+            }
+            
+            if (activeShower) {
+                meteorEl.innerHTML = `
+                    <span class="tool-value" style="color: #10b981;">Active!</span>
+                    <span class="tool-detail">${activeShower.name} (~${activeShower.rate}/hr)</span>
+                `;
+            } else {
+                meteorEl.innerHTML = `
+                    <span class="tool-value">Low</span>
+                    <span class="tool-detail">No major showers active</span>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>

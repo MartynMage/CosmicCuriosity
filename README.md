@@ -1,136 +1,192 @@
 # 🌌 CosmicCuriosity
 
-**Your window to the universe** — A beautiful, modern astronomy website that helps curious people discover what's happening in space right now.
+**Your Complete Window to the Universe**
 
-![CosmicCuriosity Preview](https://cosmiccuriosity.com/og-image.jpg)
+A comprehensive, beautifully-designed astronomy web application featuring 80+ interactive tools for stargazers, astrophotographers, and space enthusiasts. Built with pure vanilla JavaScript for maximum performance and zero dependencies.
 
-## ✨ Features
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-### 🔭 Tonight's Sky
-- Real-time moon phase and illumination
-- Planets visible tonight
-- Personalized sky report by ZIP code (privacy-first, no data stored)
-- Best viewing times and conditions
+## 🌟 Live Demo
 
-### 📅 Celestial Events Calendar
-- Meteor showers (Perseids, Geminids, Lyrids, and more)
-- Solar and lunar eclipses
-- Planetary conjunctions and oppositions
-- Rocket launches (Artemis, SpaceX, and more)
-- Filterable by event type
+**[→ Visit CosmicCuriosity.com](https://cosmiccuriosity.com)**
 
-### 🖼️ Space Image Gallery
-- NASA Astronomy Picture of the Day integration
-- Stunning imagery from JWST, Hubble, and planetary missions
-- Full-screen modal viewer with descriptions
+---
 
-### 📰 Space News
-- Latest updates from NASA and space agencies
-- Mission updates and discoveries
-- Accessible, jargon-free summaries
+## ✨ Features Overview (80+ Tools)
 
-### 🎯 Additional Features
-- Animated space facts carousel
-- Fully responsive (mobile-first design)
-- Dark mode space-inspired aesthetic
-- Accessibility compliant (skip links, ARIA labels, semantic HTML)
-- Comprehensive SEO with structured data
+### 🔭 Core Astronomy (20 features)
+- **Interactive Star Map** — Full-sky view with constellation lines, stars to magnitude 6
+- **Moon Phase Tracker** — Current phase, illumination %, rise/set times, lunar calendar
+- **Planet Tracker** — Real-time positions for all 8 planets with visibility status
+- **Meteor Shower Radar** — Active showers, ZHR rates, radiant positions
+- **Aurora Forecast** — Kp index, probability calculator based on latitude
+- **Constellation Guide** — All 88 constellations with mythology
+- **Eclipse Tracker** — Upcoming solar/lunar eclipses with countdowns
+- **Light Pollution Map** — Bortle scale estimator
+- **ISS & Satellite Tracker** — Real-time position and pass predictions
+- **Comet Watch** — Current bright comets
+- **Deep Sky Objects** — Messier & NGC catalog
+- **And more...**
 
-## 🚀 Quick Start
+### 📊 Data & Calculations (18 features)
+- **Annual Sky Calendar** — 2026 celestial events month-by-month
+- **Golden Hour Calculator** — Photography times with current phase display
+- **Seeing Conditions Forecast** — Atmospheric stability predictions
+- **This Day in Space History** — Historical events from space exploration
+- **Live Sun Data** — Sunspot number, solar flux, solar wind
+- **Tide Integration** — Lunar-influenced predictions
+- **And more...**
 
-### Option 1: Just open it
+### 🚀 Space News & Media (15 features)
+- **NASA APOD** — Astronomy Picture of the Day
+- **Space News Feed** — Latest headlines
+- **Rocket Launch Schedule** — SpaceX, NASA, ESA launches
+- **Artemis Mission Tracker** — Lunar program progress
+- **Webb Telescope Gallery** — Latest JWST images
+- **And more...**
+
+### 🛠️ Tools & Utilities (12 features)
+- **Observation Log** — Digital notebook
+- **Equipment Manager** — Telescope inventory
+- **Target Planner** — Observing lists
+- **Star Chart Generator** — Printable maps
+- **Dark Adaptation Timer** — Red-light mode
+- **And more...**
+
+### 🎨 UI & Experience (15 features)
+- **5 Theme Options** — Dark, Midnight, Nebula, Light, Night Vision
+- **Animated Star Background** — Parallax twinkling stars
+- **Sound Design** — Optional ambient sounds
+- **PWA Support** — Install as standalone app
+- **Offline Mode** — Core features work without internet
+- **Keyboard Shortcuts** — T=Theme, S=Sound, ?=Help
+- **And more...**
+
+### 🔬 Advanced Features (6 features)
+- **Telescope Control Interface** — ASCOM/INDI GoTo mount integration
+- **Live Remote Telescope Feeds** — Slooh, Virtual Telescope links
+- **Exoplanet Explorer** — Interactive database of known exoplanets
+- **And more...**
+
+---
+
+## 🚀 Getting Started
+
+### Quick Start (No Build Required!)
+
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/cosmic-curiosity.git
+git clone https://github.com/your-username/cosmic-curiosity.git
+cd cosmic-curiosity
 
 # Open in browser
 open index.html
 ```
 
-### Option 2: Local server
+That's it! No npm install, no build step, no dependencies.
+
+### Optional: Local Server
+
 ```bash
-# Using Python
 python -m http.server 8000
-
-# Using Node.js
-npx serve
-
-# Using PHP
-php -S localhost:8000
+# Visit http://localhost:8000
 ```
 
-Then visit `http://localhost:8000`
+---
 
 ## 📁 Project Structure
 
 ```
 cosmic-curiosity/
-├── index.html              # Main website (single-page app)
-├── assets/
-│   ├── logo.svg            # Icon logo
-│   └── logo-horizontal.svg # Full logo with text
-├── README.md
-├── LICENSE
-├── .gitignore
-└── CONTRIBUTING.md
+├── index.html           # Main application
+├── astro-engine.js      # Core astronomical calculations
+├── starmap.js           # Interactive star map
+├── features.js          # News, launches, APOD modules
+├── astro-features.js    # Planets, meteors, aurora, etc.
+├── data-features.js     # Calendar, golden hour, history
+├── ui-advanced.js       # Themes, sounds, telescope control
+├── sw.js                # Service worker (offline support)
+├── manifest.json        # PWA manifest
+├── assets/              # Logos and images
+└── ...config files
 ```
-
-## 🛠️ Tech Stack
-
-- **HTML5** — Semantic markup
-- **CSS3** — Custom properties, Grid, Flexbox, animations
-- **Vanilla JavaScript** — No frameworks, no dependencies
-- **Google Fonts** — Instrument Serif, Space Mono, DM Sans
-
-## 📊 Data Sources
-
-All data comes from free, public APIs:
-
-- [NASA Open APIs](https://api.nasa.gov/) — APOD, imagery
-- [NASA Image Library](https://images.nasa.gov/)
-- Astronomical calculations (client-side)
-
-## 🔒 Privacy
-
-The ZIP code feature is **100% private**:
-- All calculations happen locally in your browser
-- No data is transmitted to any server
-- ZIP code is cleared from memory after use
-- No cookies, no tracking, no analytics
-
-## 🎨 Design
-
-- **Color Palette**: Deep space darks with indigo/cyan accents
-- **Typography**: Instrument Serif (display), Space Mono (data), DM Sans (body)
-- **Aesthetic**: Modern, approachable, inspiring wonder
-
-## 📱 Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## 📄 License
-
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
-
-## 🙏 Credits
-
-- Space imagery courtesy of NASA/ESA/JAXA
-- Astronomical data from NASA Open APIs
-- Icons and emojis from system fonts
-
-## 🌟 Star History
-
-If you find this project useful, please consider giving it a ⭐!
 
 ---
 
-**Built with ✦ for curious minds everywhere**
+## 🛠️ Technical Details
 
-[Visit CosmicCuriosity](https://cosmiccuriosity.com) • [Report Bug](https://github.com/yourusername/cosmic-curiosity/issues) • [Request Feature](https://github.com/yourusername/cosmic-curiosity/issues)
+### Astronomy Engine Features
+- **Planet Positions**: VSOP87 simplified (< 1° accuracy)
+- **Moon Phase**: Meeus algorithms
+- **Coordinate Transforms**: Equatorial ↔ Horizontal
+- **Time Functions**: Julian date, sidereal time
+
+### Design Principles
+1. **Zero Dependencies** — Pure vanilla JS
+2. **Privacy First** — All calculations local, nothing stored
+3. **Offline Ready** — Service worker caching
+4. **Performance** — <100KB total JavaScript
+
+---
+
+## 🌐 Deployment
+
+Works on any static host:
+- **Netlify**: `netlify deploy --prod`
+- **Vercel**: `vercel --prod`
+- **GitHub Pages**: Settings → Pages → Deploy from main
+
+---
+
+## 🎨 Customization
+
+### Adding Themes
+
+```javascript
+// In ui-advanced.js
+ThemeManager.themes.yourTheme = {
+    name: 'Your Theme',
+    bgDeep: '#yourcolor',
+    bgCard: '#yourcolor',
+    accentGlow: '#yourcolor',
+    textPrimary: '#yourcolor',
+    textSecondary: '#yourcolor'
+};
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+**Ideas:**
+- 🐛 Bug fixes
+- 🌍 Translations
+- 🔭 New calculations
+- 🎨 New themes
+
+---
+
+## 📜 License
+
+MIT License — see [LICENSE](LICENSE)
+
+---
+
+## 🙏 Acknowledgments
+
+- **NASA** — APOD API and imagery
+- **Stellarium** — Star map inspiration
+- **The Astronomy Community** — Making the universe accessible
+
+---
+
+<p align="center">
+  <strong>🌟 Clear skies and happy stargazing! 🌟</strong>
+</p>
+
+<p align="center">
+  Made with ❤️ for the astronomy community
+</p>
