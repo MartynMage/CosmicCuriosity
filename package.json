@@ -1,0 +1,32 @@
+{
+  "name": "cosmic-curiosity",
+  "version": "1.0.0",
+  "description": "Your window to the universe — A beautiful astronomy website for curious minds",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve",
+    "dev": "npx serve -l 3000",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/cosmic-curiosity.git"
+  },
+  "keywords": [
+    "astronomy",
+    "space",
+    "nasa",
+    "stargazing",
+    "meteor-shower",
+    "eclipse",
+    "planets",
+    "moon-phase",
+    "night-sky"
+  ],
+  "author": "CosmicCuriosity",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/cosmic-curiosity/issues"
+  },
+  "homepage": "https://cosmiccuriosity.com"
+}
